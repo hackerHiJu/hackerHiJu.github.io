@@ -13,7 +13,7 @@ info:
   # Site title
   title: HackerHiJu.Site
   # Site subtitle
-  subtitle: 一个有趣的人
+  subtitle: 一个有趣的网站
   # Author name
   author: HiJu
   # Site URL
@@ -29,7 +29,7 @@ defaults:
   # Site logo
   logo:
   # Site avatar
-  avatar: /images/redefine-avatar.svg
+  avatar: /images/头像.ico
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -52,7 +52,7 @@ global:
   fonts:
     # Chinese fonts
     chinese:
-      enable: false # Whether to enable custom chinese fonts
+      enable: true # Whether to enable custom chinese fonts
       family:  # Font family
       url:  # Font URL to CSS file
     # English fonts
@@ -72,7 +72,7 @@ global:
   # Effects on mouse hover
   hover:
     shadow: true # shadow effect
-    scale: false # scale effect
+    scale: true # scale effect
   # Scroll progress
   scroll_progress:
     bar: true # progress bar
@@ -202,6 +202,12 @@ navbar:
     Home:
       path: /
       icon: fa-regular fa-house # can be empty
+    咖啡:
+      path: /java
+      icon: fa-brands fa-java
+    都是好东西:
+      path: /bookmarks/
+      icon: fa-solid fa-bookmark
     # Archives:
     #   path: /archives
     #   icon: fa-regular fa-archive # can be empty
@@ -346,7 +352,7 @@ comment:
   # Whether to enable comment
   enable: true
   # Comment system
-  system: waline # waline, gitalk, twikoo, giscus
+  system: gitalk # waline, gitalk, twikoo, giscus
   # System configuration
   config:
     # Waline comment system. See https://waline.js.org/
@@ -359,10 +365,10 @@ comment:
       reaction: false # Waline reaction. See https://waline.js.org/reference/client/props.html#reaction
     # Gitalk comment system. See https://github.com/gitalk/gitalk
     gitalk:
-      clientID: # GitHub Application Client ID
-      clientSecret: # GitHub Application Client Secret
-      repo: # GitHub repository
-      owner: # GitHub repository owner
+      clientID: Ov23liIysgjBtAKZDxVn # GitHub Application Client ID
+      clientSecret: d0f1f46730eed4a55a5b59f7d2df3da6bd093618 # GitHub Application Client Secret
+      repo: hackerHiJu.GiTalk # GitHub repository
+      owner: hackerHiJu # GitHub repository owner
       proxy: # GitHub repository proxy
     # Twikoo comment system. See https://twikoo.js.org/
     twikoo:
@@ -457,6 +463,7 @@ page_templates:
   friends_column: 2
   # Tags page style
   tags_style: blur # blur, cloud
+  bookmarks_column: 3
 # PAGE TEMPLATES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
