@@ -369,7 +369,7 @@ comment:
       clientSecret: d0f1f46730eed4a55a5b59f7d2df3da6bd093618 # GitHub Application Client Secret
       repo: hackerHiJu.GiTalk # GitHub repository
       owner: hackerHiJu # GitHub repository owner
-      proxy: https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token # GitHub repository proxy
+      proxy: https://gitalk.iamxiaohaijun.workers.dev/?https://github.com/login/oauth/access_token # GitHub repository proxy
     # Twikoo comment system. See https://twikoo.js.org/
     twikoo:
       version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
