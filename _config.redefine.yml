@@ -125,8 +125,8 @@ home_banner:
   style: fixed # static or fixed
   # Home banner image
   image:
-    light: /images/wallhaven-wqery6-light.webp # light mode
-    dark: /images/wallhaven-wqery6-dark.webp # dark mode
+    light: /images/简单的背景.png # light mode
+    dark: /images/简单的背景.png # dark mode
   # Home banner title
   title: 废话少说上号
   # Home banner subtitle
@@ -144,7 +144,7 @@ home_banner:
     smart_backspace: true # Whether to smart backspace
   # Color of home banner text
   text_color:
-    light: "#fff" # light mode
+    light: "#d1d1b6" # light mode
     dark: "#d1d1b6" # dark mode
   # Specific style of the text
   text_style:
@@ -369,7 +369,7 @@ comment:
       clientSecret: d0f1f46730eed4a55a5b59f7d2df3da6bd093618 # GitHub Application Client Secret
       repo: hackerHiJu.GiTalk # GitHub repository
       owner: hackerHiJu # GitHub repository owner
-      proxy: # GitHub repository proxy
+      proxy: https://netnr-proxy.cloudno.de/ # GitHub repository proxy
     # Twikoo comment system. See https://twikoo.js.org/
     twikoo:
       version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
