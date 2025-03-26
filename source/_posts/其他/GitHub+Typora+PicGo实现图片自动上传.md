@@ -66,10 +66,10 @@ thumbnail: "https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-pictur
     "current": "github",
     "uploader": "github",
     "github": {
-      "repo": "haijun823/note-picture",
-      "token": "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",
+      "repo": "{用户名}/{仓库名}",
+      "token": "xxxxx",
       "path": "note-picture",
-      "customUrl": "https://cdn.jsdelivr.net/gh/haijun823/note-picture@main",
+      "customUrl": "https://cdn.jsdelivr.net/gh/{用户名}/{仓库名}@main",
       "branch": "main"
     }
   },
