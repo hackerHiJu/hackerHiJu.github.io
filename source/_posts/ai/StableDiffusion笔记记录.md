@@ -2,10 +2,13 @@
 title: StableDiffusion入门
 date: 2024-12-30 19:07:05
 updated: 2024-12-30 19:07:05
-tags: ["SD", "AI"]
+tags:
+  - SD
+  - AI
 comments: true
-categories: ["AI"]
-thumbnail: "/images/天空.png"
+categories:
+  - AI
+thumbnail: "https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png"
 ---
 
 # 1. 部署SD
@@ -39,8 +42,6 @@ custom_channels:
 > ```cmd
 > conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 > ```
-
-
 
 ## 1.1 安装SD
 
@@ -84,7 +85,7 @@ stable-diffusion-webui-rembg：非常强大的抠图功能
 - 通过扩展插件的方式克隆下载
 - 启动时报错时可以进入扩展插件中打开 **install.py** 手动拿出来进行下载
 
-> pip install importlib_metadata 
+> pip install importlib_metadata
 >
 > pip install nvidia-cudnn-cu11==8.9.4.25 --no-cache-dir
 >
@@ -100,7 +101,8 @@ stable-diffusion-webui-rembg：非常强大的抠图功能
 
 ![image-20240318205840741](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20240318205840741.png)
 
-**注意事项：如果使用的是默认预设，需要注意的是每次生成图片的参数不能超过模型规定的最大值和最小值之间，并且数值需要是64的倍数** 现在就可以看到出图的时间是非常的快了
+**注意事项：如果使用的是默认预设，需要注意的是每次生成图片的参数不能超过模型规定的最大值和最小值之间，并且数值需要是64的倍数**
+现在就可以看到出图的时间是非常的快了
 
 ![image-20240318210139874](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20240318210139874.png)
 
@@ -108,19 +110,19 @@ stable-diffusion-webui-rembg：非常强大的抠图功能
 
 相同的参数设定下静态的预设比动态的预设性能更高显存占用更低
 
-![image-20240318212229709](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20240318212229709.png)
+![image-20240318212229709|1570x625](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20240318212229709.png)
 
 - 512 x 512 | Batch Size1(Static)
-  - static表示所有的参数都是固定的，每批的数量数，还有最优的高度和最高的宽度，所有的都固定了
-- 512 x 512 - 768 x 768 | Batch Size1 -4 
-  - 表示动态的参数设定，相当于就设置了一个范围
-  - 最优的宽度设置最常用的就好，出图更快
-  - 一个模型下面最多只能构建2个，点击强制重构后可以突破
-  - **静态和动态的模型会自动合并到一个模型下面，调用时会自动调用下面的最引擎**
+    - static表示所有的参数都是固定的，每批的数量数，还有最优的高度和最高的宽度，所有的都固定了
+- 512 x 512 - 768 x 768 | Batch Size1 -4
+    - 表示动态的参数设定，相当于就设置了一个范围
+    - 最优的宽度设置最常用的就好，出图更快
+    - 一个模型下面最多只能构建2个，点击强制重构后可以突破
+    - **静态和动态的模型会自动合并到一个模型下面，调用时会自动调用下面的最引擎**
 - **高阶用法**：、
-  - 想要多个预设进行切换就可以根据尺寸多生成几个静态的预设，后续大模型会自动调用（静态引擎没有限制，动态最多只能构建两个）
-  - **要想使用高分辨率修复，需要至少两个静态。例如：768x768和1536x1536 要与原尺寸和放大尺寸做匹配**
-  - **LoRA转换**：给lora加速，将lora转换TensorRT模型后，lora会自动融入到模型当中不用选择里面自带
+    - 想要多个预设进行切换就可以根据尺寸多生成几个静态的预设，后续大模型会自动调用（静态引擎没有限制，动态最多只能构建两个）
+    - **要想使用高分辨率修复，需要至少两个静态。例如：768x768和1536x1536 要与原尺寸和放大尺寸做匹配**
+    - **LoRA转换**：给lora加速，将lora转换TensorRT模型后，lora会自动融入到模型当中不用选择里面自带
 
 ![image-20240318212616607](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20240318212616607.png)
 
@@ -144,11 +146,12 @@ stable-diffusion-webui-rembg：非常强大的抠图功能
 
 #### 模型下载
 
-需要到 [Bingsu/adetailer at main (huggingface.co)](https://huggingface.co/Bingsu/adetailer/tree/main) 下载对应修复的模型文件，将其放到 **models/adetailer** 文件夹下面，设置里面将 **adetailer** 的最大模型设置为5
+需要到 [Bingsu/adetailer at main (huggingface.co)](https://huggingface.co/Bingsu/adetailer/tree/main) 下载对应修复的模型文件，将其放到 *
+*models/adetailer** 文件夹下面，设置里面将 **adetailer** 的最大模型设置为5
 
 - 模型的组成：修复的部位_使用的算法+版本+精度
-  - 例如：face_yolov8m，修复脸部，yolo算法，版本8，m代表中型
-  - s代表小型，n代表纳米（比小型更小），m代表中型，模型越小处理越快，代价就行精度更低
+    - 例如：face_yolov8m，修复脸部，yolo算法，版本8，m代表中型
+    - s代表小型，n代表纳米（比小型更小），m代表中型，模型越小处理越快，代价就行精度更低
 - mediapipe_face_full：只能对真人起效果
 
 - face_yolov8m.pt：修复脸部
@@ -161,7 +164,7 @@ stable-diffusion-webui-rembg：非常强大的抠图功能
 #### 参数说明
 
 - 检测设置：用于扩大检查的范围
-  - 检查模型置信度阈值：值越小，检测范围越大
+    - 检查模型置信度阈值：值越小，检测范围越大
 
 ### 1.2.10 controlnet插件
 
@@ -217,22 +220,20 @@ Tag的格式：
 权重：
 
 - 括号法制
-  - ()  = 增加1.1倍
-  - {} = 增加1.05倍
-  - [] = 减少1.1 倍
+    - ()  = 增加1.1倍
+    - {} = 增加1.05倍
+    - [] = 减少1.1 倍
 - 数字法则：
-  - (tag:1.3) = 增加1.3倍
-  - (tag:0.5) = 1/2的权重
-  - 大于一就是增加
-  - 小于一就是减少
+    - (tag:1.3) = 增加1.3倍
+    - (tag:0.5) = 1/2的权重
+    - 大于一就是增加
+    - 小于一就是减少
 
 - 混合法则：
 
-  - tag AND tag
+    - tag AND tag
 
-  - [tag|tag]
-
-    
+    - [tag|tag]
 
 ## 2.4 采样步数（Steps）
 
@@ -310,7 +311,8 @@ Tag的格式：
 
 # 4. 嵌入式（Embedding）
 
-也叫做 **Textual inversion** 把关键词打包为一个小模型，如果出现成千上百的关键词就可以将其进行打包，安装路径 **根目录 \embeddings**，在生成特点人物形象、画风、姿势动作上应用广泛；使用的最多是在 **方向提示词** 可以将很多负面提示词打包成一个嵌入式模型，应用时只需要输入文件名就可以，推荐模型
+也叫做 **Textual inversion** 把关键词打包为一个小模型，如果出现成千上百的关键词就可以将其进行打包，安装路径 **根目录 \embeddings**
+，在生成特点人物形象、画风、姿势动作上应用广泛；使用的最多是在 **方向提示词** 可以将很多负面提示词打包成一个嵌入式模型，应用时只需要输入文件名就可以，推荐模型
 
 - badhandv4:修复手指
 - easynegative
@@ -363,8 +365,6 @@ Tag的格式：
 - y轴CFG: 5-10[3] 提示词的相关性，也是五张图，由模型来分配
 - z轴sampler：表示在两种采样器的情况下进行对比
 
-
-
 ![image-20240316110710073](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20240316110710073.png)
 
 ## 8.4 StableSR
@@ -372,19 +372,18 @@ Tag的格式：
 [StableSR图像放大算法脚本](https://github.com/pkuliyi2015/sd-webui-stablesr)，秒杀4x-UltraSharp，按照官网文档使用即可
 
 - 需要配合一个大模型一起使用 [stabilityai/stable-diffusion-2-1-base](https://huggingface.co/stabilityai/stable-diffusion-2-1-base/tree/main)
-- 安装脚本内置模型：[stablesr_webui_sd-v2-1-512-ema](https://drive.google.com/file/d/1tWjkZQhfj07sHDR4r9Ta5Fk4iMp1t3Qw/view)，打开网页直接下载即可，放大扩展插件的 **StableSR** 文件路径下面的 models
+- 安装脚本内置模型：[stablesr_webui_sd-v2-1-512-ema](https://drive.google.com/file/d/1tWjkZQhfj07sHDR4r9Ta5Fk4iMp1t3Qw/view)
+  ，打开网页直接下载即可，放大扩展插件的 **StableSR** 文件路径下面的 models
 - 安装需要的插件：**Tiled Diffusion、Tiled VAE** 直接扩展里面安装即可
-
-
 
 # 9. 图生图
 
 - **重绘强度（核心）**：强度越低跟原图相近，如果太高就会跟原图不一样
 - 缩放模式：
-  - 拉伸：把图片硬拉成想要的尺寸
-  - 裁剪：图片裁剪
-  - 填充：最后一个像素进行填充，以最边上的像素为基础（跟重绘强度配合使用）
-  - 直接缩放：类似拉伸
+    - 拉伸：把图片硬拉成想要的尺寸
+    - 裁剪：图片裁剪
+    - 填充：最后一个像素进行填充，以最边上的像素为基础（跟重绘强度配合使用）
+    - 直接缩放：类似拉伸
 
 ### 9.1 图生图（手绘修正/Sketch）
 
@@ -394,17 +393,17 @@ Tag的格式：
 
 - 蒙版模糊度：给蒙版加高斯模糊，就是给蒙版添加模糊度，值越低模糊的越少，值越高蒙版效果越柔和
 - 蒙版区域：
-  - 蒙版内：蒙版涂在哪里就重绘哪里
-  - 蒙版外：图哪里就不重绘哪里
+    - 蒙版内：蒙版涂在哪里就重绘哪里
+    - 蒙版外：图哪里就不重绘哪里
 - 重绘参考内容：
-  - 原图像素：AI渲染时必须要考虑原图的色素进行重绘
-  - 填充空白：渲染时不需要考虑原图，自己随便画
+    - 原图像素：AI渲染时必须要考虑原图的色素进行重绘
+    - 填充空白：渲染时不需要考虑原图，自己随便画
 - 重绘画布大小：
-  - 以原图尺寸重绘：会以整个图片的尺寸来进行重绘
-  - 以蒙版尺寸重绘：按照蒙版的大小进行重绘（局部修复推荐使用）
-  - 以蒙版尺寸重绘时的外部填充半径：（建议默认32）
-    - 值越少参考周围像素就越少
-    - 值越高参考周围像素就越多
+    - 以原图尺寸重绘：会以整个图片的尺寸来进行重绘
+    - 以蒙版尺寸重绘：按照蒙版的大小进行重绘（局部修复推荐使用）
+    - 以蒙版尺寸重绘时的外部填充半径：（建议默认32）
+        - 值越少参考周围像素就越少
+        - 值越高参考周围像素就越多
 
 ### 9.3 局部重绘（有色蒙版）
 
@@ -464,24 +463,22 @@ Tag的格式：
 
 - return mask：返回一个蒙版
 - alpha matting：
-  - Erode Size：主体边缘像素预留区域（侵蚀量），保留主体的边缘留下的一下像素，类似边缘模糊，越高效果越不好但是可以去黑边
-  - Foreground threshold：前景阈值
-  - Backgorund threshold：背景阈值
+    - Erode Size：主体边缘像素预留区域（侵蚀量），保留主体的边缘留下的一下像素，类似边缘模糊，越高效果越不好但是可以去黑边
+    - Foreground threshold：前景阈值
+    - Backgorund threshold：背景阈值
 
 推荐预设值
 
 - u2net：
-  - Erode Size：6
-  - Foreground：143
-  - Background：187
+    - Erode Size：6
+    - Foreground：143
+    - Background：187
 
 ## 10.2 图片信息
 
 右边会出现一些图片的一些提示词和反向提示
 
 ![image-20240317113239780](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20240317113239780.png)
-
-
 
 # 8. lora训练
 
@@ -536,9 +533,10 @@ Tag的格式：
 
 - 输入目录：图片的路径
 - 输出目录：定义模型的地址
-  - image：图片的地址，图片的文件名称格式必须是 **数字_你想起的名称**，例如：30_xwz，数字代表文件夹内每张图片需要训练的步数，lora建议 **1500 - 6000张**；
-  - log：运行的日志
-  - model：模型的保存地方
+    - image：图片的地址，图片的文件名称格式必须是 **数字_你想起的名称**，例如：30_xwz，数字代表文件夹内每张图片需要训练的步数，lora建议 **1500 -
+      6000张**；
+    - log：运行的日志
+    - model：模型的保存地方
 
 ![image-20240314220924696](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20240314220924696.png)
 
@@ -584,8 +582,6 @@ Tag的格式：
 - Finetuning：模型微调的页面
 
 - Utilities：给模型打tag
-
-  
 
 ### 1. 参数说明
 

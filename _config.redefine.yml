@@ -25,7 +25,7 @@ info:
 # Docs: https://redefine-docs.ohevan.com/basic/defaults
 defaults:
   # Favicon
-  favicon: /images/redefine-favicon.svg
+  favicon: /images/头像.ico
   # Site logo
   logo: /images/头像.ico
   # Site avatar
@@ -125,8 +125,8 @@ home_banner:
   style: fixed # static or fixed
   # Home banner image
   image:
-    light: /images/简单的背景.png # light mode
-    dark: /images/简单的背景.png # dark mode
+    light: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%B8%8A%E7%8F%AD-%E4%B8%8D%E6%83%B3%E5%8A%A0%E7%8F%AD.png # light mode
+    dark: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%B8%8A%E7%8F%AD-%E4%B8%8D%E6%83%B3%E5%8A%A0%E7%8F%AD.png # dark mode
   # Home banner title
   title: 废话少说上号
   # Home banner subtitle
@@ -201,13 +201,10 @@ navbar:
   links:
     Home:
       path: /
-      icon: fa-regular fa-house # can be empty
-    咖啡:
-      path: /java
-      icon: fa-brands fa-java fa-beat
-    都是好东西:
+      icon: fa-regular fa-house fa-beat # can be empty
+    这有好东西:
       path: /bookmarks/
-      icon: fa-solid fa-bookmark
+      icon: fa-solid fa-bookmark fa-shake
     # Archives:
     #   path: /archives
     #   icon: fa-regular fa-archive # can be empty
@@ -231,7 +228,7 @@ navbar:
   # Navbar search (local search). Requires hexo-generator-searchdb (npm i hexo-generator-searchdb). See https://github.com/theme-next/hexo-generator-searchdb
   search:
     # Whether to enable
-    enable: false
+    enable: true
     # Preload search data when the page loads
     preload: true
 # NAVIGATION BAR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -460,10 +457,10 @@ plugins:
 # Docs: https://redefine-docs.ohevan.com/page_templates
 page_templates:
   # Friend Links page column number
-  friends_column: 2
+  friends_column: 5
   # Tags page style
   tags_style: blur # blur, cloud
-  bookmarks_column: 3
+  bookmarks_column: 5
 # PAGE TEMPLATES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 

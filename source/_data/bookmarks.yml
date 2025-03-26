@@ -1,5 +1,5 @@
 - category: AI
-  icon: fa-tools # 工具分类的图标
+  icon: fa-solid fa-brain # 工具分类的图标
   items:
     - name: ChatGPT
       link: https://chat.openai.com # 书签链接地址
@@ -9,7 +9,108 @@
       link: https://www.anthropic.com/
       description: Anthropic 的 AI 对话助手
       image: https://www.anthropic.com/favicon.ico
-    - name: Claude
-      link: https://www.anthropic.com/
-      description: Anthropic 的 AI 对话助手
-      image: https://www.anthropic.com/favicon.ico
+    - name: 通义千问
+      link: https://chat.qwen.ai/
+      description: 通义千问智能AI对话助手
+      image: https://assets.alicdn.com/g/qwenweb/qwen-webui-fe/0.0.57/favicon.png
+    - name: DeepSeek
+      link: https://chat.deepseek.com/
+      description: DeepSeek AI对话助手
+      image: https://cdn.deepseek.com/chat/icon.png
+    - name: 微调Qwen
+      link: https://qwen.readthedocs.io/zh-cn/latest/getting_started/quickstart.html# # 书签链接地址
+      description: 一起动手微调大模型
+      image: https://assets.alicdn.com/g/qwenweb/qwen-webui-fe/0.0.57/favicon.png   # 网站图标地址
+    - name: 羊驼
+      link: https://ollama.com/search # 书签链接地址
+      description: ollama
+      image: https://ollama.com/public/ollama.png    # 网站图标地址
+    - name: C站
+      link: https://civitai.com/models # 书签链接地址
+      description: ollama
+      image: https://ollama.com/public/ollama.png    # 网站图标地址
+
+- category: 学习资源
+  icon: fa-book
+  items:
+    - name: Deepfacelab论坛
+      link: https://www.dfldata.cc/forum.php # 书签链接地址
+      description: 一个AI换脸的论坛网站
+      image: https://chat.openai.com/favicon.ico # 网站图标地址
+    - name: Deepfacelab论坛
+      link: https://learn.lianglianglee.com/ # 书签链接地址
+      description: 一个极客时间的资料
+      image: https://learn.lianglianglee.com/static/favicon.png # 网站图标地址
+    - name: 凤凰架构
+      link: https://icyfenix.cn/summary/ # 书签链接地址
+      description: 想成为大佬？
+      image: https://icyfenix.cn/images/logo-color.png # 网站图标地址
+    - name: 开源项目集
+      link: https://dromara.org/zh/ # 书签链接地址
+      description: 全是开源啊
+      image: https://dromara.org/logo.svg # 网站图标地址
+    - name: 美团技术沙龙
+      link: https://tech.meituan.com/ # 书签链接地址
+      description: 美团的大佬们写的技术博客
+      image:  # 网站图标地址
+    - name: Java知识体系
+      link: https://pdai.tech/md/outline/x-outline.html # 书签链接地址
+      description: 起飞
+      image:  # 网站图标地址
+    - name: 小林coding
+      link: https://cdn.xiaolincoding.com/logo.png # 书签链接地址
+      description: 一位大佬的博客
+      image:  # 网站图标地址
+    - name: 7天用GO从零实现系列
+      link: https://geektutu.com/post/gee.html # 书签链接地址
+      description: GO语言！！！
+      image: https://geektutu.com/img/icon.png   # 网站图标地址
+    - name: GO语言手写Redis
+      link: https://www.cnblogs.com/Finley/category/1598973.html # 书签链接地址
+      description: 我行你也行
+      image: https://pic.cnblogs.com/avatar/793413/20160316194205.png   # 网站图标地址
+
+
+- category: 工具
+  icon: fa-tools
+  items:
+    - name: AIBase
+      link: https://www.aibase.com/zh/tools # 书签链接地址
+      description: 一个AI工具集合
+      image: https://top.aibase.com/_static/img/Frame@2x.eddfa3e.png # 网站图标地址
+    - name: AIBot
+      link: https://ai-bot.cn/ # 书签链接地址
+      description: 一个AI工具集合
+      image: https://ai-bot.cn/wp-content/uploads/2023/03/ai-bot-logo-black.png # 网站图标地址
+    - name: AIHub
+      link: https://www.aihub.cn/tools/ # 书签链接地址
+      description: 一个AI工具集合
+      image: https://www.aihub.cn/wp-content/uploads/2023/08/aihub_cn_logo.png # 网站图标地址
+    - name: AGI掘金知识库
+      link: https://agijuejin.feishu.cn/wiki/UvJPwhfkiitMzhkhEfycUnS9nAm # 书签链接地址
+      description: 好东西
+      image:  # 网站图标地址
+    - name: StableDiffusion-CN
+      link: https://www.stablediffusion-cn.com/ # 书签链接地址
+      description: SD的中文论坛
+      image: https://www.stablediffusion-cn.com/sdcnlogo.svg # 网站图标地址
+
+- category: VPN
+  icon: fa-solid fa-rocket-launch
+  items:
+    - name: 奈云
+      link: https://www.v2ny.de/#/register?code=GzlNKzir # 书签链接地址
+      description: 比较好用的VPN
+      image: https://www.v2ny.de/theme/aurora/static/img/naiun.png # 网站图标地址
+    - name: 小黑子
+      link: https://xn--i8s3q176n.xyz/#/register?code=eK7qtJ1E # 书签链接地址
+      description: 要啥自行车？要啥自行车？要啥自行车？
+      image:  # 网站图标地址
+
+- category: 资源
+  icon: fa-book
+  items:
+    - name: ChatGPT
+      link: https://chat.openai.com # 书签链接地址
+      description: OpenAI 的 AI 对话助手
+      image: https://chat.openai.com/favicon.ico # 网站图标地址
