@@ -1,14 +1,14 @@
 ---
 title: StableDiffusion入门
-date: 2024-12-30 19:07:05
-updated: 2024-12-30 19:07:05
+date: 2025-03-25 09:29
+updated: 2025-03-25 09:29
 tags:
   - SD
   - AI
 comments: true
 categories:
   - AI
-thumbnail: "https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png"
+thumbnail: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png
 ---
 
 # 1. 部署SD
@@ -110,7 +110,7 @@ stable-diffusion-webui-rembg：非常强大的抠图功能
 
 相同的参数设定下静态的预设比动态的预设性能更高显存占用更低
 
-![image-20240318212229709|1570x625](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20240318212229709.png)
+![image-20240318212229709](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20240318212229709.png)
 
 - 512 x 512 | Batch Size1(Static)
     - static表示所有的参数都是固定的，每批的数量数，还有最优的高度和最高的宽度，所有的都固定了
