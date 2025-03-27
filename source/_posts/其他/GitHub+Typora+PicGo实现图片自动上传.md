@@ -7,8 +7,9 @@ tags:
 comments: true
 categories:
   - TOOLS
-thumbnail: "https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png"
+thumbnail: "https://images.unsplash.com/photo-1505322022379-7c3353ee6291?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMwNzYzOTN8&ixlib=rb-4.0.3&q=85&w=1920&h=1080"
 ---
+
 
 # 1. 创建Github图床
 
