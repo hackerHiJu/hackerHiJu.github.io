@@ -19,7 +19,7 @@ published:
 
 ## 一、包含产品
 
-![image-20201123155404887](images/image-20201123155404887.png)
+![image-20201123155404887](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20201123155404887.png)
 
 有许多组件功能需要收费
 
@@ -61,15 +61,15 @@ published:
 2. **:release版本先等等(等别人去探雷)**
 3. **:推荐 SR2以后的可以放心使用**
 
-![image-20201123161712060](images/image-20201123161712060.png)
+![image-20201123161712060](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20201123161712060.png)
 
 ## 四、Nacos
 
 ### 1、领域模型
 
-![image-20201123162206455](images/image-20201123162206455.png)
+![image-20201123162206455](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20201123162206455.png)
 
-![image-20201123162707647](images/image-20201123162707647.png)
+![image-20201123162707647](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20201123162707647.png)
 
 - NameSpace：用来实现环境隔离
 - Group：服务分组，不同的分组不能相互调用；比如 订单分组不能调用仓储分组
@@ -82,7 +82,7 @@ published:
 
 **注意点：集群启动时需要修改startup.sh的参数，如果不改小可能启动不了这么多的服务**
 
-![image-20201123164611079](images/image-20201123164611079.png)
+![image-20201123164611079](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20201123164611079.png)
 
 ```
 修改conf文件夹下面的 cluster.conf文件，将所有集群的节点配置到当中
