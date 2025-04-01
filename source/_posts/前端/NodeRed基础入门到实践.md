@@ -1,13 +1,15 @@
 ---
-title: Node-Red笔记
+title: NodeRed基础入门到实践
 date: 2024-12-30 19:07:05
 updated: 2024-12-30 19:07:05
 tags:
-  - TOOLS
+  - 前端
+  - 物联网
 comments: true
 categories:
-  - TOOLS
-thumbnail: "https://images.unsplash.com/photo-1505322022379-7c3353ee6291?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMwNzYzOTN8&ixlib=rb-4.0.3&q=85&w=1920&h=1080"
+  - 前端
+  - 物联网
+thumbnail: https://images.unsplash.com/photo-1505322022379-7c3353ee6291?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMwNzYzOTN8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
 ---
 
 # Node-Red使用笔记

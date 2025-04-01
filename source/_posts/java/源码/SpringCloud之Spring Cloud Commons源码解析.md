@@ -11,7 +11,7 @@ categories:
   - 源码
   - Spring
   - SpringCloud
-thumbnail: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png
+thumbnail: https://images.unsplash.com/photo-1682685797366-715d29e33f9d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMxNTE3OTZ8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
 published: true
 ---
 

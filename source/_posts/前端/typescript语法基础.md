@@ -11,6 +11,78 @@ categories:
 thumbnail: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png
 ---
 
+
+# TypeScript 语法基础
+
+TypeScript 是一种由 Microsoft 开发的开源编程语言，它是 JavaScript 的一个超集，增加了静态类型和其他特性以帮助开发者编写更健壮和易于维护的代码。本文将介绍 TypeScript 的基本语法和核心概念。
+
+---
+
+## 1. TypeScript 的特点
+
+- **静态类型检查**：在编译阶段捕获类型错误。
+- **类型推断**：即使未显式声明类型，TypeScript 也能推断变量的类型。
+- **面向对象支持**：支持类、接口、继承等面向对象编程特性。
+- **与 JavaScript 兼容**：TypeScript 编译后生成标准的 JavaScript 代码。
+
+---
+
+## 2. 安装 TypeScript
+
+首先需要安装 Node.js 和 npm（Node.js 的包管理器）。然后通过以下命令安装 TypeScript：
+
+```bash
+npm install -g typescript
+```
+
+安装完成后，可以通过以下命令编译 TypeScript 文件：
+
+```bash
+tsc yourfile.ts
+```
+
+---
+
+## 3. 基本语法
+
+### 3.1 变量声明
+
+TypeScript 支持 `var`、`let` 和 `const` 三种变量声明方式，推荐使用 `let` 和 `const`，因为它们具有块级作用域。
+
+```typescript
+let name: string = "Alice";
+const age: number = 25;
+
+name = "Bob"; // 合法
+// age = 30; // 错误，const 声明的变量不可重新赋值
+```
+
+### 3.2 数据类型
+
+TypeScript 支持以下基本数据类型：
+
+- `number`：数字类型。
+- `string`：字符串类型。
+- `boolean`：布尔类型。
+- `null` 和 `undefined`：表示空值和未定义。
+- `any`：允许变量为任意类型。
+- `void`：表示没有返回值。
+- `never`：表示永远不会返回值。
+- `object`：表示非原始类型的数据。
+
+示例：
+
+```typescript
+let isDone: boolean = false;
+let decimal: number = 6;
+let color: string = "blue";
+let notDefined: undefined = undefined;
+let nothing: void = undefined;
+```
+
+### 3.3 类型推断
+
+如果未显式声明类型，TypeScript 会根据初始化值推
 # 语法入门
 
 ## 1. 数据类型

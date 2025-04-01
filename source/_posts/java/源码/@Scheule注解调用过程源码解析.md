@@ -1,5 +1,5 @@
 ---
-title: Scheule注解调用过程源码解析
+title: "@Scheule注解调用过程源码解析"
 date: 2024-12-30 19:07:05
 updated: 2024-12-30 19:07:05
 tags:
@@ -10,7 +10,7 @@ categories:
   - Java
   - 源码
   - Spring
-thumbnail: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png
+thumbnail: https://images.unsplash.com/photo-1682686581660-3693f0c588d2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMxNTE2MjF8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
 published: true
 ---
 
