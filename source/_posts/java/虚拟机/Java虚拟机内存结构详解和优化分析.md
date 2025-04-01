@@ -1,3 +1,14 @@
+---
+title: Java虚拟机内存结构详解和优化分析
+date: 2025-04-01 02:12:33
+updated: 2025-04-01 02:12:33
+tags:
+  - JVM
+comments: true
+categories: JVM
+thumbnail: https://images.unsplash.com/photo-1682685796444-acc2f5c1b7b6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDM0ODc5NTN8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
+published: true
+---
 # JVM
 一种可以运行Java字节码的虚拟机。只要编译文件符合虚拟机编译的文件格式要求。
 
