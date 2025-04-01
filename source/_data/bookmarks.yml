@@ -28,7 +28,7 @@
     - name: C站
       link: https://civitai.com/models # 书签链接地址
       description: ollama
-      image: https://ollama.com/public/ollama.png    # 网站图标地址
+      image: https://civitai.com/favicon-blue.ico   # 网站图标地址
 
 - category: 学习资源
   icon: fa-book
@@ -36,7 +36,7 @@
     - name: Deepfacelab论坛
       link: https://www.dfldata.cc/forum.php # 书签链接地址
       description: 一个AI换脸的论坛网站
-      image: https://chat.openai.com/favicon.ico # 网站图标地址
+      image:  # 网站图标地址
     - name: Deepfacelab论坛
       link: https://learn.lianglianglee.com/ # 书签链接地址
       description: 一个极客时间的资料
