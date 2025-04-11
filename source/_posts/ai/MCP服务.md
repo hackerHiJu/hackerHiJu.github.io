@@ -444,7 +444,7 @@ print("读取图片资源：", image)
 ```
 
 #### 2.7.5 Context
-Context 对象为您的工具和资源提供对 MCP 功能的访问权限，在服务端的工具中可以进行使用并且相互之间进行调用
+Context 对象为您的工具和资源提供对 MCP 功能的访问权限，在服务端的工具中可以调用对应的资源数据
 
 ```python
 from mcp.server.fastmcp import FastMCP, Context
@@ -468,4 +468,461 @@ weather = await self.session.call_tool(name="test", arguments={"city": "北京"}
 print("天气信息：", weather)
 ```
 
-## Spring MCP
+#### 2.7.6 Server
+
+在测试时使用的例子，都是使用的框架默认提供的方式来构建对应的工具、资源等信息，如果需要自己来组建工具则可以通过自定义的方式来实现服务端通过什么方式来组合对应的工具、资源等信息。
+
+- @asynccontextmanager  ：将方法包裹为一个支持with as的对象，要求返回的数据是一个生成器对象
+- Callable：函数的类型标识方式，前面 ... 表示多个参数，后面表示返回值是任意类型
+
+自定义Server提供了更加灵活的方式来组合资源、工具，包括服务启动的生命周期流程的控制
+
+```python
+from contextlib import asynccontextmanager  
+from typing import AsyncIterator, Callable, Any  
+  
+import mcp.server.stdio  
+import mcp.types as types  
+from fastmcp import Context  
+from mcp.server.lowlevel import NotificationOptions, Server  
+from mcp.server.models import InitializationOptions  
+  
+  
+@asynccontextmanager  
+async def server_lifespan(server: Server) -> AsyncIterator[dict]:  
+    """Manage server startup and shutdown lifecycle."""  
+    # Initialize resources on startup  
+    try:  
+        yield {"message": "hello"}  
+    finally:  
+        print("最终执行")  
+  
+  
+class ExampleServer(Server):  
+    tools: types.Tool = []  
+  
+    def __init__(self, name: str, lifespan: Any):  
+        super().__init__(name, lifespan)  
+  
+    def tool(  
+            self, name: str | None = None, description: str | None = None  
+    ) -> Callable[[Callable[..., Any]], Callable[..., Any]]:  
+        if callable(name):  
+            raise TypeError(  
+                "The @tool decorator was used incorrectly. "  
+                "Did you forget to call it? Use @tool() instead of @tool"            )  
+  
+        def decorator(fn: Callable[..., Any]) -> Callable[..., Any]:  
+            self.tools.append(  
+                types.Tool(  
+                    name=name or fn.__name__,  
+                    description=description or fn.__doc__ or "",  
+                    inputSchema={  
+                        "properties": {  
+                            "city": {  
+                                "title": "City",  
+                                "type": "string"  
+                            }  
+                        },  
+                        "required": ["city"],  
+                        "title": "example-tool",  
+                        "type": "object"  
+                    }  
+                )  
+            )  
+            return fn  
+  
+        return decorator  
+  
+    def get_tools(self):  
+        return self.tools  
+  
+  
+# 指定服务的生命周期函数  
+server = ExampleServer("example-server", lifespan=server_lifespan)  
+  
+  
+@server.list_prompts()  
+async def handle_list_prompts() -> list[types.Prompt]:  
+    return [  
+        types.Prompt(  
+            name="example-prompt",  
+            description="An example prompt template",  
+            arguments=[  
+                types.PromptArgument(  
+                    name="arg1", description="Example argument", required=True  
+                )  
+            ],  
+        )  
+    ]  
+  
+  
+@server.get_prompt()  
+async def handle_get_prompt(  
+        name: str, arguments: dict[str, str] | None  
+) -> types.GetPromptResult:  
+    if name != "example-prompt":  
+        raise ValueError(f"Unknown prompt: {name}")  
+  
+    return types.GetPromptResult(  
+        description="Example prompt",  
+        messages=[  
+            types.PromptMessage(  
+                role="user",  
+                content=types.TextContent(type="text", text="Example prompt text"),  
+            )  
+        ],  
+    )  
+  
+  
+@server.list_tools()  
+async def handle_list_tools() -> list[types.Tool]:  
+    return server.get_tools()  
+  
+  
+@server.list_resources()  
+async def handle_list_resources() -> list[types.Resource]:  
+    return [  
+        types.Resource(  
+            name="example-resource",  
+            description="An example resource",  
+            content=types.TextContent(type="text", text="Example resource text"),  
+        )  
+    ]  
+  
+  
+@server.tool()  
+async def test(city: str, ctx: Context) -> str:  
+    """测试方法"""  
+    return ctx.lifespan_context["db"]  
+  
+  
+async def run():  
+    async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):  
+        await server.run(  
+            read_stream,  
+            write_stream,  
+            InitializationOptions(  
+                server_name="example",  
+                server_version="0.1.0",  
+                capabilities=server.get_capabilities(  
+                    notification_options=NotificationOptions(),  
+                    experimental_capabilities={},  
+                ),  
+            ),  
+        )  
+  
+  
+if __name__ == "__main__":  
+    import asyncio  
+  
+    asyncio.run(run())
+```
+
+### 2.8 Sampling
+
+MCP为我们提供的一个在执行工具前后可以执行的一些操作，类似回调函数；下面一个简单例子说明了如何进行注册 **Sampling** 来进行函数的回调
+
+```python
+# 服务端  
+from mcp.server import FastMCP  
+from mcp.server.fastmcp import Context  
+from mcp.types import SamplingMessage, TextContent  
+  
+mcp = FastMCP('file_server')  
+  
+  
+@mcp.tool()  
+async def delete_file(file_path: str, ctx: Context):  
+    # 创建 SamplingMessage 用于触发 sampling callback 函数  
+    mcp.get_context()  
+    result = await ctx.session.create_message(  
+        messages=[  
+            SamplingMessage(  
+                role='user',  
+                content=TextContent(type='text', text=f'是否要删除文件: {file_path} (Y)')  
+            )  
+        ],  
+        max_tokens=100  
+    )  
+  
+    # 获取到 sampling callback 函数的返回值，并根据返回值进行处理  
+    if result.content.text == 'Y':  
+        return f'文件 {file_path} 已被删除！！'  
+  
+  
+if __name__ == '__main__':  
+    mcp.run(transport='stdio')
+```
+
+```python
+# 客户端  
+import asyncio  
+  
+from mcp.client.stdio import stdio_client  
+from mcp import ClientSession, StdioServerParameters  
+from mcp.shared.context import RequestContext  
+from mcp.types import (  
+    TextContent,  
+    CreateMessageRequestParams,  
+    CreateMessageResult,  
+)  
+  
+server_params = StdioServerParameters(  
+    command='python',  
+    args=['./mcp_sampling_server.py'],  
+)  
+  
+  
+async def sampling_callback(context: RequestContext[ClientSession, None], params: CreateMessageRequestParams):  
+    # 获取工具发送的消息并显示给用户  
+    input_message = input(params.messages[0].content.text)  
+    # 将用户输入发送回工具  
+    return CreateMessageResult(  
+        role='user',  
+        content=TextContent(  
+            type='text',  
+            text=input_message.strip().upper() or 'Y'  
+        ),  
+        model='user-input',  
+        stopReason='endTurn'  
+    )  
+  
+  
+async def main():  
+    async with stdio_client(server_params) as (stdio, write):  
+        async with ClientSession(  
+                stdio, write,  
+                # 设置 sampling_callback 对应的方法  
+                sampling_callback=sampling_callback  
+        ) as session:  
+            await session.initialize()  
+            res = await session.call_tool(  
+                'delete_file',  
+                {'file_path': 'xxx.txt'}  
+            )  
+            # 获取工具最后执行完的返回结果  
+            print(res)  
+  
+  
+if __name__ == '__main__':  
+    asyncio.run(main())
+```
+
+上面的客户端使用的 **create_session**打印数据是无法显示到控制台命令行里面，所以可以替换为 **create_connected_server_and_client_session**
+
+```python
+# 客户端
+from mcp.shared.memory import (
+    create_connected_server_and_client_session as create_session
+)
+# 这里需要引入服务端的 app 对象
+from mcp_sampling_server import mcp
+
+async def sampling_callback(context, params):
+    ...
+
+async def main():
+    async with create_session(
+        mcp._mcp_server,
+        sampling_callback=sampling_callback
+    ) as client_session:
+        await client_session.call_tool(
+            'delete_file', 
+            {'file_path': 'xxx.txt'}
+        )
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+### 2.9 MCP生命周期
+
+MCP 生命周期分为3个阶段：
+- 初始化
+- 交互通信中
+- 服务被关闭
+因此，我们可以在这个三个阶段的开始和结束来做一些事情，比如创建数据库连接和关闭数据库连接、记录日志、记录工具使用信息等。
+
+```python
+import httpx
+from dataclasses import dataclass
+from contextlib import asynccontextmanager
+
+from mcp.server import FastMCP
+from mcp.server.fastmcp import Context
+
+@dataclass
+# 初始化一个生命周期上下文对象
+class AppContext:
+    # 里面有一个字段用于存储请求历史
+    histories: dict
+
+@asynccontextmanager
+async def app_lifespan(server):
+    # 在 MCP 初始化时执行
+    histories = {}
+    try:
+        # 每次通信会把这个上下文通过参数传入工具
+        yield AppContext(histories=histories)
+    finally:
+        # 当 MCP 服务关闭时执行
+        print(histories)
+
+mcp = FastMCP(
+    'web-search', 
+    # 设置生命周期监听函数
+    lifespan=app_lifespan
+)
+
+@mcp.tool()
+# 第一个参数会被传入上下文对象
+async def web_search(ctx: Context, query: str) -> str:
+    """
+    搜索互联网内容
+    Args:
+        query: 要搜索内容
+    Returns:
+        搜索结果的总结
+    """
+    # 如果之前问过同样的问题，就直接返回缓存
+    histories = ctx.request_context.lifespan_context.histories
+    if query in histories：
+    	return histories[query]
+
+    async with httpx.AsyncClient() as client:
+        response = await client.post(
+            'https://open.bigmodel.cn/api/paas/v4/tools',
+            headers={'Authorization': 'YOUR API KEY'},
+            json={
+                'tool': 'web-search-pro',
+                'messages': [
+                    {'role': 'user', 'content': query}
+                ],
+                'stream': False
+            }
+        )
+
+        res_data = []
+        for choice in response.json()['choices']:
+            for message in choice['message']['tool_calls']:
+                search_results = message.get('search_result')
+                if not search_results:
+                    continue
+                for result in search_results:
+                    res_data.append(result['content'])
+
+        return_data = '\n\n\n'.join(res_data)
+
+        # 将查询值和返回值存入到 histories 中
+        ctx.request_context.lifespan_context.histories[query] = return_data
+        return return_data
+
+if __name__ == "__main__":
+    mcp.run()
+```
+### 2.9 MCP接入SSE
+
+通过轻量级web框架 **starlette** 来接入 sse协议
+
+```cmd
+pip install starlette
+```
+
+```python
+# 服务端  
+import asyncio  
+  
+from mcp.server.fastmcp import FastMCP  
+from starlette.applications import Starlette  
+from mcp.server.sse import SseServerTransport  
+from starlette.requests import Request  
+from starlette.routing import Mount, Route  
+from mcp.server import Server  
+import uvicorn  
+  
+mcp = FastMCP('weather')  
+  
+  
+@mcp.tool()  
+async def get_weather(city: str) -> str:  
+    """获取天气信息"""  
+    return "天气信息"  
+  
+  
+def create_starlette_app(mcp_server: Server, *, debug: bool = False) -> Starlette:  
+    """创建一个starlette应用来支持sse协议"""  
+    sse = SseServerTransport("/messages/")  
+  
+    async def handle_sse(request: Request) -> None:  
+        async with sse.connect_sse(  
+                request.scope,  
+                request.receive,  
+                request._send,  
+        ) as (read_stream, write_stream):  
+            await mcp_server.run(  
+                read_stream,  
+                write_stream,  
+                mcp_server.create_initialization_options(),  
+            )  
+  
+    return Starlette(  
+        debug=debug,  
+        routes=[  
+            Route("/sse", endpoint=handle_sse),  
+            Mount("/messages/", app=sse.handle_post_message),  
+        ],  
+    )  
+  
+  
+if __name__ == '__main__':  
+    mcp_server = mcp._mcp_server  
+  
+    starlette_app = create_starlette_app(mcp_server, debug=True)  
+  
+    uvicorn.run(starlette_app, port=9000)
+```
+
+```python
+import asyncio  
+from contextlib import AsyncExitStack  
+from typing import Optional  
+  
+from mcp import ClientSession  
+from mcp.client.sse import sse_client  
+  
+  
+class MCPClient:  
+    def __init__(self):  
+        self.session: Optional[ClientSession] = None  
+        self.exit_stack = AsyncExitStack()  
+  
+    async def connect_to_sse_server(self, server_url: str):  
+        """Connect to an MCP server running with SSE transport"""  
+  
+        async with sse_client(url=server_url) as (read, write):  
+            async with ClientSession(read, write) as session:  
+                await session.initialize()  
+                print("初始化SSE客户端...")  
+                response = await session.list_tools()  
+                tools = response.tools  
+                print("\n获取到的工具:", [tool.name for tool in tools])  
+  
+    async def cleanup(self):  
+        """Properly clean up the session and streams"""  
+  
+  
+async def main():  
+    client = MCPClient()  
+    try:  
+        await client.connect_to_sse_server(server_url="http://127.0.0.1:9000/sse")  
+    finally:  
+        pass
+  
+  
+if __name__ == "__main__":  
+    import sys  
+  
+    asyncio.run(main())
+```
+## 3. Spring MCP
