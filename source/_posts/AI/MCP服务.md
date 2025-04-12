@@ -19,11 +19,11 @@ published: false
 
 ### 2.1 服务架构
 
-![[../../images/MCP服务架构.svg]]
+![MCP服务架构|500](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/MCP%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84.svg)
 
 ### 2.2 Agent架构
 
-![[../../images/Agent架构.svg]]
+![Agent架构|500](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/Agent%E6%9E%B6%E6%9E%84.svg)
 
 ### 2.3 简单客户端
 
