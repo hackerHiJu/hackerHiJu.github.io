@@ -1,5 +1,5 @@
 ---
-title: Springboot实现多数据源切换
+title: SpringBoot实现多数据源切换
 date: 2024-12-30 19:07:05
 updated: 2024-12-30 19:07:05
 tags:
@@ -11,7 +11,7 @@ categories:
   - 源码
   - Spring
 thumbnail: https://images.unsplash.com/photo-1682686578023-dc680e7a3aeb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMxNTE3NDB8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
-published: false
+published: true
 ---
 
 # springboot实现多数据源切换
