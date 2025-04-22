@@ -1450,7 +1450,7 @@ public static class CustomMcpSyncClientCustomizer implements McpSyncClientCustom
 }
 ```
 
-## 4. MCP协议
+## 4. MCP交互协议
 
 
 ## 5. 实战

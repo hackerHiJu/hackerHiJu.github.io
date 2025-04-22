@@ -1,5 +1,5 @@
 ---
-title: AI大模型
+title: AI大模型实践
 date: 2025-03-25 09:29
 updated: 2025-03-25 09:29
 tags:
