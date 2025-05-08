@@ -10,10 +10,9 @@ categories:
   - Java
   - 源码
   - Spring
-thumbnail: https://images.unsplash.com/photo-1682687220566-5599dbbebf11?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMxNTE3MDZ8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
+thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/75821cd9f3b4446ab4970d73e3c294dd.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-fb702baf24aa04827e4c35b96a941179
 published: true
 ---
-
 # 配置注入原理
 
 ## 一、@EnableConfigurationProperties注解

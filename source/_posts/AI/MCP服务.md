@@ -1446,7 +1446,7 @@ public static class CustomMcpSyncClientCustomizer implements McpSyncClientCustom
         spec.loggingConsumer((McpSchema.LoggingMessageNotification log) -> {  
             System.out.println("消息提醒：" + log.data());  
         });  
-    }  
+    } 
 }
 ```
 

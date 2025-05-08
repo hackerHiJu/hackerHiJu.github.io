@@ -1,6 +1,5 @@
 <%* 
-let url = await tp.web.random_picture("1920x1080", "science fiction,scenery");
-let result = url.match(/!\[(.*?)\]\((.*?)\)/);
+let url = tp.user.getImageRandom()
 -%>
 ---
 title: 
@@ -11,6 +10,6 @@ tags:
 comments: false
 categories:
   - 
-thumbnail: <% result[2] %>
+thumbnail: <% url %>
 published: false
 ---

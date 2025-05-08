@@ -8,7 +8,7 @@ tags:
 comments: true
 categories:
   - AI
-thumbnail: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png
+thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/373fac74aed74ddabba1477085316015.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-f3e0ba16ff565640c6904cf93bc5a0fa
 ---
 
 # 1. 部署SD

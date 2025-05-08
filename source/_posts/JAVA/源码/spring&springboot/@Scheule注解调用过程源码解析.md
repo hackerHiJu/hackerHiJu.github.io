@@ -10,7 +10,7 @@ categories:
   - Java
   - 源码
   - Spring
-thumbnail: https://images.unsplash.com/photo-1682686581660-3693f0c588d2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMxNTE2MjF8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
+thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/eea5d2e63820469db675e24dee7b7c36.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-bbad77317514830f5d4b0a9440896c80
 published: true
 ---
 

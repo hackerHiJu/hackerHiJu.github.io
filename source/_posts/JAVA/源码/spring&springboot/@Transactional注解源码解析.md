@@ -10,10 +10,9 @@ categories:
   - Java
   - 源码
   - Spring
-thumbnail: https://images.unsplash.com/photo-1683009427590-dd987135e66c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMxNTE2MzJ8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
+thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/21266c8e749848b1a4f7ebae11a2055c.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-b562793f19fbe5d10bae0f2b6189788a
 published: true
 ---
-
 # 一、spring事务源码
 
 ## 1. 注解

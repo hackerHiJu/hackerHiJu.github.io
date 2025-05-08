@@ -10,10 +10,9 @@ categories:
   - Java
   - 源码
   - Spring
-thumbnail: https://images.unsplash.com/photo-1707007871911-d06ca2d4c46f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMwODM2MjN8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
+thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/9f9a6d3ac14e40a1ae8a9008dfd86b9b.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-e3529b352fdf89bf2593cc6f87698807
 published: true
 ---
-
 ## 一、SpringBoot配置文件的加载
 
 主要研究SpringApllication.run() 方法中 prepareEnvironment() 方法

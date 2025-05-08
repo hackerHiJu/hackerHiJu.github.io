@@ -10,10 +10,9 @@ categories:
   - Java
   - 源码
   - Spring
-thumbnail: https://images.unsplash.com/photo-1682686578023-dc680e7a3aeb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMxNTE2MDF8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
+thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/6492c70ef90b42048a09e8b5a4cc124a.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-0e85f149c6738de2a9eb51d115230225
 published: true
 ---
-
 # 1. ServletWebServerApplicationContext
 
 **spring web** 容器的源码启动流程，前面讲了 **AnnotationConfigApplicationContext** 的启动流程，这一次来看一下 **spring web** 的启动流程是怎样的，内置的 **tomcat** 是如何启动？并且又是在何时将 **DispatcheServlet** 挂载到 **tomcat** 中的？

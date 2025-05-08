@@ -10,7 +10,7 @@ categories:
   - Java
   - 源码
   - Spring
-thumbnail: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png
+thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/42848fd7880e11ebb6edd017c2d2eca2.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-65716973d8e5dd156f418d9e16581d34
 published: true
 ---
 

@@ -10,10 +10,9 @@ categories:
   - Java
   - 源码
   - Spring
-thumbnail: https://images.unsplash.com/photo-1682687219640-b3f11f4b7234?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMxNTE2OTB8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
+thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/4e952013c980414da49ee18e7fb4199b.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-6a2ffb5ffc3b4a6f9912f1b6c7d68a36
 published: true
 ---
-
 # @Qualified
 
 在spring中进行依赖注入的方式有两个注解可以使用，分别是 **@Resource、@Autowired** 两个注解其对应的功能分别是

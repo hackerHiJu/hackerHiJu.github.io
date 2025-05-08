@@ -10,10 +10,9 @@ categories:
   - Java
   - 源码
   - Spring
-thumbnail: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png
+thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/ee406827c03748aa89f36c3f0e7c40db.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-317fda275c4c9e57ac928fe29ab1dba0
 published: false
 ---
-
 # Spring AOP体系源码
 
 在spring中我们知道 `AOP` 切面是对事务、动态代理等功能增强的实现，现在我们就看看spring中是如何扫描并且创建出对应的代理对象并且添加切面的

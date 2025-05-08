@@ -10,7 +10,7 @@ categories:
   - AI
   - 深度神经网络
   - Pytorch
-thumbnail: https://images.unsplash.com/photo-1614308457932-e16d85c5d053?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDM1Nzg3Nzl8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
+thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/c9d3deb2880411ebb6edd017c2d2eca2.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-35c08989d321e4c3922b114201dfd79b
 published: false
 ---
 # 1. Pytorch基础入门

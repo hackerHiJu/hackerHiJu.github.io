@@ -10,10 +10,9 @@ categories:
   - Java
   - 源码
   - Spring
-thumbnail: https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDMwODM1OTB8&ixlib=rb-4.0.3&q=85&w=1920&h=1080
+thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/bde7e33f7ddb41dc9d3ca485d030815e.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-d0e690acf1cf651dc1b3095f85fefa61
 published: true
 ---
-
 ## spring 5.3.x源码构建
 
 ### 一、fork spring仓库
