@@ -15,13 +15,12 @@ published: false
 ---
 # Spring MVC源码流程
 
+源码版本 5.3.x
 ## 1. Spring Boot挂载DispatcherServlet？
 
 在 **Springboot** 启动时我们都知道内部内置了一个 **tomcat** 的容器，然后将 **DispatcherServlet** 挂载到了容器的内部从而实现了 **Spring MVC** 机制，下面的链接说明了如何将 **DispatcherServlet** 挂载到了 **Spring Boot** 中
 
 [SpringBoot如何挂载DispatcherServlet](https://blog.csdn.net/weixin_43915643/article/details/125421616)
-
-
 
 ## 2. 配置类
 
@@ -79,141 +78,73 @@ public interface WebMvcConfigurer {
 	}
 
 	/**
-	 * Add Spring MVC lifecycle interceptors for pre- and post-processing of
-	 * controller method invocations and resource handler requests.
-	 * Interceptors can be registered to apply to all requests or be limited
-	 * to a subset of URL patterns.
+	 * 添加拦截器
 	 */
 	default void addInterceptors(InterceptorRegistry registry) {
 	}
 
 	/**
-	 * Add handlers to serve static resources such as images, js, and, css
-	 * files from specific locations under web application root, the classpath,
-	 * and others.
-	 * @see ResourceHandlerRegistry
+	 * 添加静态资源处理器，例如：js、html等
 	 */
 	default void addResourceHandlers(ResourceHandlerRegistry registry) {
 	}
 
 	/**
-	 * Configure "global" cross origin request processing. The configured CORS
-	 * mappings apply to annotated controllers, functional endpoints, and static
-	 * resources.
-	 * <p>Annotated controllers can further declare more fine-grained config via
-	 * {@link org.springframework.web.bind.annotation.CrossOrigin @CrossOrigin}.
-	 * In such cases "global" CORS configuration declared here is
-	 * {@link org.springframework.web.cors.CorsConfiguration#combine(CorsConfiguration) combined}
-	 * with local CORS configuration defined on a controller method.
-	 * @since 4.2
-	 * @see CorsRegistry
-	 * @see CorsConfiguration#combine(CorsConfiguration)
+	 * 添加跨域映射器
 	 */
 	default void addCorsMappings(CorsRegistry registry) {
 	}
 
 	/**
-	 * Configure simple automated controllers pre-configured with the response
-	 * status code and/or a view to render the response body. This is useful in
-	 * cases where there is no need for custom controller logic -- e.g. render a
-	 * home page, perform simple site URL redirects, return a 404 status with
-	 * HTML content, a 204 with no content, and more.
-	 * @see ViewControllerRegistry
+	 * 添加视图解析器
 	 */
 	default void addViewControllers(ViewControllerRegistry registry) {
 	}
 
 	/**
-	 * Configure view resolvers to translate String-based view names returned from
-	 * controllers into concrete {@link org.springframework.web.servlet.View}
-	 * implementations to perform rendering with.
-	 * @since 4.1
+	 * 配置视图解析器
 	 */
 	default void configureViewResolvers(ViewResolverRegistry registry) {
 	}
 
 	/**
-	 * Add resolvers to support custom controller method argument types.
-	 * <p>This does not override the built-in support for resolving handler
-	 * method arguments. To customize the built-in support for argument
-	 * resolution, configure {@link RequestMappingHandlerAdapter} directly.
-	 * @param resolvers initially an empty list
+	 * 添加参数解析器
 	 */
 	default void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
 	}
 
 	/**
-	 * Add handlers to support custom controller method return value types.
-	 * <p>Using this option does not override the built-in support for handling
-	 * return values. To customize the built-in support for handling return
-	 * values, configure RequestMappingHandlerAdapter directly.
-	 * @param handlers initially an empty list
+	 * 添加返回值处理器
 	 */
 	default void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> handlers) {
 	}
 
 	/**
-	 * Configure the {@link HttpMessageConverter HttpMessageConverter}s for
-	 * reading from the request body and for writing to the response body.
-	 * <p>By default, all built-in converters are configured as long as the
-	 * corresponding 3rd party libraries such Jackson JSON, JAXB2, and others
-	 * are present on the classpath.
-	 * <p><strong>Note</strong> use of this method turns off default converter
-	 * registration. Alternatively, use
-	 * {@link #extendMessageConverters(java.util.List)} to modify that default
-	 * list of converters.
-	 * @param converters initially an empty list of converters
+	 * 配置消息转换器
 	 */
 	default void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 	}
 
 	/**
-	 * Extend or modify the list of converters after it has been, either
-	 * {@link #configureMessageConverters(List) configured} or initialized with
-	 * a default list.
-	 * <p>Note that the order of converter registration is important. Especially
-	 * in cases where clients accept {@link org.springframework.http.MediaType#ALL}
-	 * the converters configured earlier will be preferred.
-	 * @param converters the list of configured converters to be extended
-	 * @since 4.1.3
+	 * 扩展或者修改HttpMessageConverter消息转换器 
 	 */
 	default void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
 	}
 
 	/**
-	 * Configure exception resolvers.
-	 * <p>The given list starts out empty. If it is left empty, the framework
-	 * configures a default set of resolvers, see
-	 * {@link WebMvcConfigurationSupport#addDefaultHandlerExceptionResolvers(List, org.springframework.web.accept.ContentNegotiationManager)}.
-	 * Or if any exception resolvers are added to the list, then the application
-	 * effectively takes over and must provide, fully initialized, exception
-	 * resolvers.
-	 * <p>Alternatively you can use
-	 * {@link #extendHandlerExceptionResolvers(List)} which allows you to extend
-	 * or modify the list of exception resolvers configured by default.
-	 * @param resolvers initially an empty list
-	 * @see #extendHandlerExceptionResolvers(List)
-	 * @see WebMvcConfigurationSupport#addDefaultHandlerExceptionResolvers(List, org.springframework.web.accept.ContentNegotiationManager)
+	 * 配置异常处理解析器
 	 */
 	default void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
 	}
 
 	/**
-	 * Extending or modify the list of exception resolvers configured by default.
-	 * This can be useful for inserting a custom exception resolver without
-	 * interfering with default ones.
-	 * @param resolvers the list of configured resolvers to extend
-	 * @since 4.3
-	 * @see WebMvcConfigurationSupport#addDefaultHandlerExceptionResolvers(List, org.springframework.web.accept.ContentNegotiationManager)
+	 * 异常处理解析器
 	 */
 	default void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
 	}
 
 	/**
-	 * Provide a custom {@link Validator} instead of the one created by default.
-	 * The default implementation, assuming JSR-303 is on the classpath, is:
-	 * {@link org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean}.
-	 * Leave the return value as {@code null} to keep the default.
+	 * 参数校验器
 	 */
 	@Nullable
 	default Validator getValidator() {
@@ -816,9 +747,204 @@ protected void doDispatch(HttpServletRequest request, HttpServletResponse respon
 	}
 ```
 
+#### 4.1.2 getHandler()
+
+获取指定处理的 **HandlerMapping** 实现类，通过下面的实现图，分为以下几个比较实用，这里springmvc我们使用的是 **RequestMappingHandlerMapping**
+
+- RequestMappingHandlerMapping：spring mvc使用的处理器映射器
+- RouterFunctionMapping：函数式处理器映射器
+- BeanNameUrlHandlerMapping：bean名称处理器映射器
+
+![](./images/Spring%20MVC源码流程解析-1747122530156.png)
+代码中返回的是一个**HandlerExecutionChain** 实体类
+
+```java
+protected HandlerExecutionChain getHandler(HttpServletRequest request) throws Exception {  
+    if (this.handlerMappings != null) {  
+       for (HandlerMapping mapping : this.handlerMappings) {  
+          //调用 RequestMappingHandlerMapping 继承的类 AbstractHandlerMapping.getHandler()
+          HandlerExecutionChain handler = mapping.getHandler(request);  
+          if (handler != null) {  
+             return handler;  
+          }  
+       }  
+    }  
+    return null;  
+}
+```
+
+调用 **AbstractHandlerMapping.getHandler(request);** 来创建处理器执行器链
+
+```java
+public final HandlerExecutionChain getHandler(HttpServletRequest request) throws Exception {  
+    // 调用子类实现的方法来读取到匹配的handler  
+    Object handler = this.getHandlerInternal(request);  
+    // 如果返回为空直接返回默认的handler  
+    if (handler == null) {  
+       handler = this.getDefaultHandler();  
+    }  
+    // 如果没有指定默认的直接返回  
+    if (handler == null) {  
+       return null;  
+    }  
+    // 如果返回的handler是字符串，则从spring容器中获取对应的bean  
+    if (handler instanceof String) {  
+       String handlerName = (String) handler;  
+       handler = this.obtainApplicationContext().getBean(handlerName);  
+    }  
+  
+    // 解析url请求路径并且进行缓存  
+    if (!ServletRequestPathUtils.hasCachedPath(request)) {  
+       this.initLookupPath(request);  
+    }  
+  
+    // 创建处理器链，并且将拦截器设置进去  
+    HandlerExecutionChain executionChain = this.getHandlerExecutionChain(handler, request);  
+  
+    if (this.logger.isTraceEnabled()) {  
+       this.logger.trace("Mapped to " + handler);  
+    }  
+    else if (this.logger.isDebugEnabled() && !DispatcherType.ASYNC.equals(request.getDispatcherType())) {  
+       this.logger.debug("Mapped to " + executionChain.getHandler());  
+    }  
+  
+    // 判断当前handler是否配置的处理跨域请求的handler  
+    if (this.hasCorsConfigurationSource(handler) || CorsUtils.isPreFlightRequest(request)) {  
+       CorsConfiguration config = this.getCorsConfiguration(handler, request);  
+       if (this.getCorsConfigurationSource() != null) {  
+          CorsConfiguration globalConfig = this.getCorsConfigurationSource().getCorsConfiguration(request);  
+          config = (globalConfig != null ? globalConfig.combine(config) : config);  
+       }  
+       if (config != null) {  
+          config.validateAllowCredentials();  
+       }  
+       executionChain = this.getCorsHandlerExecutionChain(request, executionChain, config);  
+    }  
+  
+    return executionChain;  
+}
+```
+
+spring mvc的默认实现调用的 **AbstractHandlerMethodMapping** 中的方法，通过解析请求的路径来获取到对应的handler处理器
+
+```java
+protected HandlerMethod getHandlerInternal(HttpServletRequest request) throws Exception {  
+    //获取到请求的路径出来  
+    String lookupPath = this.initLookupPath(request);  
+    //加上读锁  
+    this.mappingRegistry.acquireReadLock();  
+    try {  
+       //通过请求的地址去获取到 HandlerMethod对象  
+       HandlerMethod handlerMethod = this.lookupHandlerMethod(lookupPath, request);  
+       //先判断当前 HandlerMethod 中存储的bean信息是否是名称，如果是名称的话通过spring容器进行创建出来  
+       return (handlerMethod != null ? handlerMethod.createWithResolvedBean() : null);  
+    }  
+    finally {  
+       //释放锁  
+       this.mappingRegistry.releaseReadLock();  
+    }  
+}
+```
+
+比较简单，返回的是执行方法的本身和拦截器
+```java
+public class HandlerExecutionChain {  
+    /**  
+     * handler类型是HandlerMethod  
+     */    
+     private final Object handler;  
+  
+    /**  
+     * 注入的拦截器  
+     */  
+    private final List<HandlerInterceptor> interceptorList = new ArrayList<>();
+}
+```
+
+**HandlerMethod** 用于保存需要调用的对应的bean对象和方法
+
+```java
+public class HandlerMethod {  
+  
+    /** Logger that is available to subclasses. */  
+    protected static final Log logger = LogFactory.getLog(HandlerMethod.class);  
+  
+    // 对应的target对象  
+    private final Object bean;  
+  
+    // bean工厂  
+    @Nullable  
+    private final BeanFactory beanFactory;  
+  
+    // spring context 容器对象  
+    @Nullable  
+    private final MessageSource messageSource;  
+  
+    // bean的类型  
+    private final Class<?> beanType;  
+  
+    // 要执行的方法  
+    private final Method method;  
+  
+    // 桥接方法  
+    private final Method bridgedMethod;  
+  
+    // 方法的参数  
+    private final MethodParameter[] parameters;  
+  
+    @Nullable  
+    private HttpStatus responseStatus;  
+  
+    @Nullable  
+    private String responseStatusReason;  
+  
+    @Nullable  
+    private HandlerMethod resolvedFromHandlerMethod;  
+  
+    @Nullable  
+    private volatile List<Annotation[][]> interfaceParameterAnnotations;  
+  
+    private final String description;
+}
+```
+
+#### 4.1.3 getHandlerAdapter()
+
+获取完处理器后，需要通过对应的适配器来执行对应的方法
+
+```java
+protected HandlerAdapter getHandlerAdapter(Object handler) throws ServletException {  
+    if (this.handlerAdapters != null) {  
+       for (HandlerAdapter adapter : this.handlerAdapters) {  
+          //调用方法 org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.supports()          
+          if (adapter.supports(handler)) {  
+             return adapter;  
+          }  
+       }  
+    }  
+    throw new ServletException("No adapter for handler [" + handler +  
+          "]: The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler");  
+}
+```
+
+通过下面实现图，spring实现的几个
+
+- RequestMappingHandlerAdapter：springmvc的映射适配器
+- HandlerFunctionAdapter：函数式适配器
+- SimpleControllerHandlerAdapter：处理Controller实现类
+- SimpleServletHandlerAdapter：处理Servlet实现类
+
+![](./images/Spring%20MVC源码流程解析-1747128190774.png)
+
+#### 4.1.4 handle()
+
+真正调用的是通过 RequestMappingHandlerAdapter.handle() 方法
+
 ### 4.2 RequestMappingHandlerAdapter
 
 最终 **doDispatch()** 方法调用的类就是 **RequestMappingHandlerAdapter.invokeHandlerMethod()** 方法
+
+#### 4.2.1 invokeHandlerMethod()
 
 ```java
 protected ModelAndView invokeHandlerMethod(HttpServletRequest request,
@@ -849,7 +975,7 @@ protected ModelAndView invokeHandlerMethod(HttpServletRequest request,
 			invocableMethod.setDataBinderFactory(binderFactory);
 			invocableMethod.setParameterNameDiscoverer(this.parameterNameDiscoverer);
 
-			//模型视图容器
+			//模型视图容器，如果参数中或者返回值有ModelAndView相关的则会使用
 			ModelAndViewContainer mavContainer = new ModelAndViewContainer();
 			mavContainer.addAllAttributes(RequestContextUtils.getInputFlashMap(request));
 			modelFactory.initModel(webRequest, mavContainer, invocableMethod);
@@ -890,5 +1016,690 @@ protected ModelAndView invokeHandlerMethod(HttpServletRequest request,
 	}
 ```
 
+#### 4.2.2 invokeAndHandle()
 
+执行方法比较简单：
 
+- 执行请求（调用方法）
+- 设置请求的响应状态
+- 处理返回值
+
+```java
+public void invokeAndHandle(ServletWebRequest webRequest, ModelAndViewContainer mavContainer,  
+       Object... providedArgs) throws Exception {  
+       //执行方法后获取到结果值进行处理  
+    Object returnValue = invokeForRequest(webRequest, mavContainer, providedArgs);  
+    // 给响应设置状态码  
+    setResponseStatus(webRequest);  
+  
+    if (returnValue == null) {  
+       if (isRequestNotModified(webRequest) || getResponseStatus() != null || mavContainer.isRequestHandled()) {  
+          disableContentCachingIfNecessary(webRequest);  
+          mavContainer.setRequestHandled(true);  
+          return;  
+       }  
+    }  
+    else if (StringUtils.hasText(getResponseStatusReason())) {  
+       mavContainer.setRequestHandled(true);  
+       return;  
+    }  
+  
+    mavContainer.setRequestHandled(false);  
+    Assert.state(this.returnValueHandlers != null, "No return value handlers");  
+    try {  
+	    //处理返回值
+       this.returnValueHandlers.handleReturnValue(  
+             returnValue, getReturnValueType(returnValue), mavContainer, webRequest);  
+    }  
+    catch (Exception ex) {  
+       if (logger.isTraceEnabled()) {  
+          logger.trace(formatErrorForReturnValue(returnValue), ex);  
+       }  
+       throw ex;  
+    }  
+}
+```
+
+下面是执行请求是来进行参数解析的实现类：
+
+- PathVariableMapMethodArgumentResolver：@PathVariable注解的处理
+- RequestResponseBodyMethodProcessor：@RequestBody注解的处理同时也是ResponseBody的处理器
+
+![](./images/Spring%20MVC源码流程解析-1747128987857.png)
+```java
+public Object invokeForRequest(NativeWebRequest request, @Nullable ModelAndViewContainer mavContainer,  
+       Object... providedArgs) throws Exception {  
+  
+    /**  
+     * 通过 HandlerMethodArgumentResolverComposite 中构建的参数解析器对请求的参数进行解析  
+     */  
+    Object[] args = getMethodArgumentValues(request, mavContainer, providedArgs);  
+    if (logger.isTraceEnabled()) {  
+       logger.trace("Arguments: " + Arrays.toString(args));  
+    }  
+    // 调用方法  
+    return doInvoke(args);  
+}
+```
+
+返回值的处理方式和实现类与请求参数的类似
+
+```java
+public void handleReturnValue(@Nullable Object returnValue, MethodParameter returnType,  
+       ModelAndViewContainer mavContainer, NativeWebRequest webRequest) throws Exception {  
+    /**  
+     * 根据返回值和返回值的类型来选择对应的处理器  
+     * 循环便利HandlerMethodReturnValueHandler  
+     */    
+     HandlerMethodReturnValueHandler handler = this.selectHandler(returnValue, returnType);  
+    if (handler == null) {  
+       throw new IllegalArgumentException("Unknown return value type: " + returnType.getParameterType().getName());  
+    }  
+    // 执行对应的返回值处理器  
+    handler.handleReturnValue(returnValue, returnType, mavContainer, webRequest);  
+}
+```
+
+**HandlerMethodReturnValueHandler** 的实现类在进行返回值处理时会执行对应的切面也就是 **@ControllerAdvice** 注解标识的类或者 **RequestBodyAdvice 、ResponseBodyAdvice** 接口的实现类，在返回值写入Response中时进行处理，而处理的逻辑则抽取到了 **AbstractMessageConverterMethodProcessor** 类中。代码主要执行的逻辑根据请求头中的 **MediaType** 来选择对应的转换器
+
+```java
+protected <T> void writeWithMessageConverters(@Nullable T value, MethodParameter returnType,  
+       ServletServerHttpRequest inputMessage, ServletServerHttpResponse outputMessage)  
+       throws IOException, HttpMediaTypeNotAcceptableException, HttpMessageNotWritableException {  
+    //返回值数据  
+    Object body;  
+    //方法的返回值类型  
+    Class<?> valueType;  
+    //目标值类型  
+    Type targetType;  
+  
+    if (value instanceof CharSequence) {  
+       body = value.toString();  
+       valueType = String.class;  
+       targetType = String.class;  
+    }
+    else {  
+       body = value;  
+       valueType = getReturnValueType(body, returnType);  
+       targetType = GenericTypeResolver.resolveType(getGenericType(returnType), returnType.getContainingClass());  
+    }  
+  
+    //判断返回值或者参数的类型是 InputStream 流  
+    if (isResourceType(value, returnType)) {  
+       //设置头信息为bytes  
+       outputMessage.getHeaders().set(HttpHeaders.ACCEPT_RANGES, "bytes");  
+       ....
+    }  
+  
+    MediaType selectedMediaType = null;  
+    //获取到请求头中的内容类型  
+    MediaType contentType = outputMessage.getHeaders().getContentType();  
+    boolean isContentTypePreset = contentType != null && contentType.isConcrete();  
+    if (isContentTypePreset) {  
+       if (logger.isDebugEnabled()) {  
+          logger.debug("Found 'Content-Type:" + contentType + "' in response");  
+       }  
+       selectedMediaType = contentType;  
+    }  
+    else {  
+       ...
+    }  
+  
+    if (selectedMediaType != null) {  
+       selectedMediaType = selectedMediaType.removeQualityValue();  
+       //获取到 http消息转换器，这里根据请求头中的http类型来进行转换  
+       for (HttpMessageConverter<?> converter : this.messageConverters) {  
+          GenericHttpMessageConverter genericConverter = (converter instanceof GenericHttpMessageConverter ?  
+                (GenericHttpMessageConverter<?>) converter : null);  
+          //先判断目标类型和返回值类型以及http的类型是否匹配  
+          if (genericConverter != null ?  
+                ((GenericHttpMessageConverter) converter).canWrite(targetType, valueType, selectedMediaType) :  
+                converter.canWrite(valueType, selectedMediaType)) {  
+             //先执行切面的beforeBodyWrite方法  
+             body = getAdvice().beforeBodyWrite(body, returnType, selectedMediaType,  
+                   (Class<? extends HttpMessageConverter<?>>) converter.getClass(),  
+                   inputMessage, outputMessage);  
+             //如果body不为空的话执行写入  
+             if (body != null) {  
+                Object theBody = body;  
+                LogFormatUtils.traceDebug(logger, traceOn ->  
+                      "Writing [" + LogFormatUtils.formatValue(theBody, !traceOn) + "]");  
+                addContentDispositionHeader(inputMessage, outputMessage);  
+                /**  
+                 * 如果通过 @ControllerAdvice 对返回的数据进行统一封装的话，如果返回值类型是String类型，而切面里面对返回值进行了封装的话  
+                 * 这里就会出现转换错误，因为这里的 targetType的类型还是String， selectedMediaType的类型 MediaType.TEXT_PLAIN文本类型  
+                 * 就会选择 StringHttpMessageConverter 进行转换，而这个转换器是不支持对返回值进行封装的，所以这里就会报错  
+                 */  
+                if (genericConverter != null) {  
+                   genericConverter.write(body, targetType, selectedMediaType, outputMessage);  
+                }  
+                else {  
+                   ((HttpMessageConverter) converter).write(body, selectedMediaType, outputMessage);  
+                }  
+             }  
+             else {  
+                if (logger.isDebugEnabled()) {  
+                   logger.debug("Nothing to write: null body");  
+                }  
+             }  
+             return;  
+          }  
+       }  
+    }  
+  
+    if (body != null) {  
+       Set<MediaType> producibleMediaTypes =  
+             (Set<MediaType>) inputMessage.getServletRequest()  
+                   .getAttribute(HandlerMapping.PRODUCIBLE_MEDIA_TYPES_ATTRIBUTE);  
+  
+       if (isContentTypePreset || !CollectionUtils.isEmpty(producibleMediaTypes)) {  
+          throw new HttpMessageNotWritableException(  
+                "No converter for [" + valueType + "] with preset Content-Type '" + contentType + "'");  
+       }  
+       throw new HttpMediaTypeNotAcceptableException(getSupportedMediaTypes(body.getClass()));  
+    }  
+}
+```
+
+## 5. 请求响应切面
+
+请求响应的切面主要是在请求和写入响应值是进行前置或者后主处理的逻辑，spring中提供了两个接口来进行实现并且通过 **RequestResponseBodyAdviceChain** 来进行组装
+
+- RequestBodyAdvice
+- ResponseBodyAdvice
+
+### 5.1 初始化
+
+初始化逻辑则是在 **RequestMappingHandlerAdapter.afterPropertiesSet()** 中进行初始化
+
+```java
+public void afterPropertiesSet() {  
+    /**  
+     * 读取出容器中所有的 @ControllerAdvice，将其包装成 ControllerAdviceBean  
+     * 其中区分出一下三种通知类型  
+     *     initBinderAdviceCache：包含@InitBinder注解的类  
+     *     modelAttributeAdviceCache：包含@ModelAttribute注解的类  
+     *     requestResponseBodyAdvice：实现了 RequestBodyAdvice\ResponseBodyAdvice 的类  
+     */  
+    initControllerAdviceCache();  
+  
+    if (this.argumentResolvers == null) {  
+       //设置参数的解析器，这里会配置很多自定义的默认参数解析器  
+       List<HandlerMethodArgumentResolver> resolvers = getDefaultArgumentResolvers();  
+       this.argumentResolvers = new HandlerMethodArgumentResolverComposite().addResolvers(resolvers);  
+    }  
+    if (this.initBinderArgumentResolvers == null) {  
+       //设置默认的参数绑定器  
+       List<HandlerMethodArgumentResolver> resolvers = getDefaultInitBinderArgumentResolvers();  
+       this.initBinderArgumentResolvers = new HandlerMethodArgumentResolverComposite().addResolvers(resolvers);  
+    }  
+    if (this.returnValueHandlers == null) {  
+       //设置默认的返回值处理器  
+       List<HandlerMethodReturnValueHandler> handlers = getDefaultReturnValueHandlers();  
+       this.returnValueHandlers = new HandlerMethodReturnValueHandlerComposite().addHandlers(handlers);  
+    }  
+}
+```
+
+```java
+private void initControllerAdviceCache() {  
+    if (getApplicationContext() == null) {  
+       return;  
+    }  
+    //获取到所有的 @ControllerAdvice 注解标记的类，用于执行通知  
+    List<ControllerAdviceBean> adviceBeans = ControllerAdviceBean.findAnnotatedBeans(getApplicationContext());  
+  
+    List<Object> requestResponseBodyAdviceBeans = new ArrayList<>();  
+  
+    for (ControllerAdviceBean adviceBean : adviceBeans) {  
+       Class<?> beanType = adviceBean.getBeanType();  
+       if (beanType == null) {  
+          throw new IllegalStateException("Unresolvable type for ControllerAdviceBean: " + adviceBean);  
+       }  
+       //处理方法中包含了 @ModelAttribute 注解的  
+       Set<Method> attrMethods = MethodIntrospector.selectMethods(beanType, MODEL_ATTRIBUTE_METHODS);  
+       if (!attrMethods.isEmpty()) {  
+          this.modelAttributeAdviceCache.put(adviceBean, attrMethods);  
+       }  
+       //获取到方法中 @InitBinder 注解标记的类  
+       Set<Method> binderMethods = MethodIntrospector.selectMethods(beanType, INIT_BINDER_METHODS);  
+       if (!binderMethods.isEmpty()) {  
+          this.initBinderAdviceCache.put(adviceBean, binderMethods);  
+       }  
+       //用于判断切面是否实现了以下两个接口  
+       if (RequestBodyAdvice.class.isAssignableFrom(beanType) || ResponseBodyAdvice.class.isAssignableFrom(beanType)) {  
+          requestResponseBodyAdviceBeans.add(adviceBean);  
+       }  
+    }  
+  
+    if (!requestResponseBodyAdviceBeans.isEmpty()) {  
+       this.requestResponseBodyAdvice.addAll(0, requestResponseBodyAdviceBeans);  
+    }   
+}
+```
+
+### 5.2 调用
+
+切面调用的类分别为：
+
+- AbstractMessageConverterMethodArgumentResolver：处理请求读取参数时调用切面
+- AbstractMessageConverterMethodProcessor：处理响应值时调用切面
+
+## 6. 统一异常
+
+spring在处理异常时可以自定义异常处理器来统一处理整个处理链中的异常，提供了 **HandlerExceptionResolver** 接口
+
+- ExceptionHandlerExceptionResolver：全局异常的解析器
+
+### 6.1 初始化
+
+异常处理器的初始化是在 **DispatcherServlet.initHandlerExceptionResolvers** 就将容器中对应的处理器读取出来进行初始化
+
+```java
+private void initHandlerExceptionResolvers(ApplicationContext context) {  
+    this.handlerExceptionResolvers = null;  
+  
+    if (this.detectAllHandlerExceptionResolvers) {  
+       // 从容器中获取到所有的解析器 
+       Map<String, HandlerExceptionResolver> matchingBeans = BeanFactoryUtils  
+             .beansOfTypeIncludingAncestors(context, HandlerExceptionResolver.class, true, false);  
+       if (!matchingBeans.isEmpty()) {  
+          this.handlerExceptionResolvers = new ArrayList<>(matchingBeans.values());  
+          // We keep HandlerExceptionResolvers in sorted order.  
+          AnnotationAwareOrderComparator.sort(this.handlerExceptionResolvers);  
+       }  
+    }  
+    else {
+	   //如果没有添加所有的解析器，只需要从容器中添加默认解析器
+       try {  
+          HandlerExceptionResolver her =  
+                context.getBean(HANDLER_EXCEPTION_RESOLVER_BEAN_NAME, HandlerExceptionResolver.class);  
+          this.handlerExceptionResolvers = Collections.singletonList(her);  
+       }  
+       catch (NoSuchBeanDefinitionException ex) {  
+          // Ignore, no HandlerExceptionResolver is fine too.  
+       }  
+    }  
+  
+    // Ensure we have at least some HandlerExceptionResolvers, by registering  
+    // default HandlerExceptionResolvers if no other resolvers are found.    
+    if (this.handlerExceptionResolvers == null) {  
+       this.handlerExceptionResolvers = getDefaultStrategies(context, HandlerExceptionResolver.class);  
+       if (logger.isTraceEnabled()) {  
+          logger.trace("No HandlerExceptionResolvers declared in servlet '" + getServletName() +  
+                "': using default strategies from DispatcherServlet.properties");  
+       }  
+    }  
+}
+```
+
+**ExceptionHandlerExceptionResolver** 则是默认实现类，初始化时同样的套路通过 **afterPropertiesSet()** 方法来进行初始化
+
+```java
+public void afterPropertiesSet() {  
+    // 首先将 ControllerAdvice中包含了@ExceptionHandler 切面进行初始化
+    initExceptionHandlerAdviceCache();  
+    // 异常的参数解析器  
+    if (this.argumentResolvers == null) {  
+       List<HandlerMethodArgumentResolver> resolvers = getDefaultArgumentResolvers();  
+       this.argumentResolvers = new HandlerMethodArgumentResolverComposite().addResolvers(resolvers);  
+    }  
+    // 返回值解析器进行初始化  
+    if (this.returnValueHandlers == null) {  
+       List<HandlerMethodReturnValueHandler> handlers = getDefaultReturnValueHandlers();  
+       this.returnValueHandlers = new HandlerMethodReturnValueHandlerComposite().addHandlers(handlers);  
+    }
+}
+```
+
+### 6.2 调用
+
+调用时则是 **doDispatch()** 执行出现了异常创建一个异常，然后统一调用 **processDispatchResult()** 来判断异常是否为空时进行处理
+
+```java
+protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {  
+  
+    try {  
+       ......
+       }  
+       catch (Exception ex) {  
+          dispatchException = ex;  
+       }  
+       catch (Throwable err) {  
+          // As of 4.3, we're processing Errors thrown from handler methods as well,  
+          // making them available for @ExceptionHandler methods and other scenarios.          
+          dispatchException = new NestedServletException("Handler dispatch failed", err);  
+       }  
+       //处理请求结果  
+       processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);  
+    }  
+    catch (Exception ex) {  
+       //触发拦截器的完成处理  
+       triggerAfterCompletion(processedRequest, response, mappedHandler, ex);  
+    }  
+    catch (Throwable err) {  
+       triggerAfterCompletion(processedRequest, response, mappedHandler,  
+             new NestedServletException("Handler processing failed", err));  
+    }  
+    finally {  
+       if (asyncManager.isConcurrentHandlingStarted()) {  
+          // Instead of postHandle and afterCompletion  
+          if (mappedHandler != null) {  
+             mappedHandler.applyAfterConcurrentHandlingStarted(processedRequest, response);  
+          }  
+       }  
+       else {  
+          // Clean up any resources used by a multipart request.  
+          if (multipartRequestParsed) {  
+             cleanupMultipart(processedRequest);  
+          }  
+       }  
+    }  
+}
+```
+
+### 6.3 默认实现
+
+异常的调用逻辑则跟请求时保持一致的逻辑
+
+```java
+protected ModelAndView doResolveHandlerMethodException(HttpServletRequest request,  
+       HttpServletResponse response, @Nullable HandlerMethod handlerMethod, Exception exception) {  
+      
+    // 获取到对应的 @ExceptionHandler 注解标识的可以处理的方法  
+    ServletInvocableHandlerMethod exceptionHandlerMethod = this.getExceptionHandlerMethod(handlerMethod, exception);  
+    if (exceptionHandlerMethod == null) {  
+       return null;  
+    }  
+      
+    // 解析对应的参数  
+    if (this.argumentResolvers != null) {  
+       exceptionHandlerMethod.setHandlerMethodArgumentResolvers(this.argumentResolvers);  
+    }  
+    if (this.returnValueHandlers != null) {  
+       exceptionHandlerMethod.setHandlerMethodReturnValueHandlers(this.returnValueHandlers);  
+    }  
+  
+    ServletWebRequest webRequest = new ServletWebRequest(request, response);  
+    ModelAndViewContainer mavContainer = new ModelAndViewContainer();  
+  
+    ArrayList<Throwable> exceptions = new ArrayList<>();  
+    try {  
+       if (this.logger.isDebugEnabled()) {  
+          this.logger.debug("Using @ExceptionHandler " + exceptionHandlerMethod);  
+       }  
+       // Expose causes as provided arguments as well  
+       Throwable exToExpose = exception;  
+       while (exToExpose != null) {  
+          exceptions.add(exToExpose);  
+          Throwable cause = exToExpose.getCause();  
+          exToExpose = (cause != exToExpose ? cause : null);  
+       }  
+       Object[] arguments = new Object[exceptions.size() + 1];  
+       exceptions.toArray(arguments);  // efficient arraycopy call in ArrayList  
+       arguments[arguments.length - 1] = handlerMethod;  
+       exceptionHandlerMethod.invokeAndHandle(webRequest, mavContainer, arguments);  
+    }  
+    catch (Throwable invocationEx) {  
+       
+    }  
+}
+```
+
+## 7. RouterFunctionMapping
+
+函数接口式映射器，主要的使用方式是可以通过webflux来实现响应式请求
+
+### 7.1 使用
+
+通过定义好对应的**RouterFunction**函数接口就可以实现，默认实现为**BuiltRouterFunction**
+
+```java
+@Configuration  
+public class RouterConfig {
+    @Bean  
+    public RouterFunction<ServerResponse> helloRoute() {
+	    // 创建 RouterFunctionBuilder 进行构建路由器
+        return RouterFunctions.route()  
+                .GET("/hello", request -> ServerResponse.ok().body("Hello World"))  
+                .build();  
+    }
+}
+```
+
+### 7.2 初始化
+
+在 **WebMvcConfigurationSupport** 中自动装配了 **RouterFunctionMapping** 类来作为函数映射器
+
+```java
+public RouterFunctionMapping routerFunctionMapping(  
+       @Qualifier("mvcConversionService") FormattingConversionService conversionService,  
+       @Qualifier("mvcResourceUrlProvider") ResourceUrlProvider resourceUrlProvider) {  
+  
+    RouterFunctionMapping mapping = new RouterFunctionMapping();  
+    mapping.setOrder(3); 
+    //设置拦截器
+    mapping.setInterceptors(getInterceptors(conversionService, resourceUrlProvider)); 
+    //配置跨域配置
+    mapping.setCorsConfigurations(getCorsConfigurations());
+    //消息转换器
+    mapping.setMessageConverters(getMessageConverters());  
+	//路径解析器
+    PathPatternParser patternParser = getPathMatchConfigurer().getPatternParser();  
+    if (patternParser != null) {  
+       mapping.setPatternParser(patternParser);  
+    }  
+    return mapping;  
+}
+```
+
+**RouterFunctionMapping**实现了**InitializingBean**在加载时进行初始化
+
+```java
+public void afterPropertiesSet() throws Exception {  
+    //判断是否有routerFunction  
+    if (this.routerFunction == null) {  
+       //从spring容器中初始化RouterFunction，注意RouterFunction是一个链表的形式进行整合  
+       this.initRouterFunction();  
+    }  
+    //初始化messageConverters  
+    if (CollectionUtils.isEmpty(this.messageConverters)) {  
+       this.initMessageConverters();  
+    }  
+    //初始化PathPatternParser路径解析器  
+    if (this.routerFunction != null) {  
+       PathPatternParser patternParser = this.getPatternParser();  
+       if (patternParser == null) {  
+          patternParser = new PathPatternParser();  
+          this.setPatternParser(patternParser);  
+       }  
+       RouterFunctions.changeParser(this.routerFunction, patternParser);  
+    }  
+}
+```
+
+### 7.3 函数路由
+
+spring通过**RouterFunction**来组装函数式路由，下面是路由接口的方法定义
+
+```java
+@FunctionalInterface  
+public interface RouterFunction<T extends ServerResponse> {  
+  
+    /**  
+     * 判断路由是否匹配当前请求
+     */    
+     Optional<HandlerFunction<T>> route(ServerRequest request);  
+  
+    /**  
+     * 将两个路由进行合并组合
+     */    
+     default RouterFunction<T> and(RouterFunction<T> other) {  
+       return new RouterFunctions.SameComposedRouterFunction<>(this, other);  
+    }  
+  
+    /**  
+     * 将两个路由进行合并组合
+     */    
+     default RouterFunction<?> andOther(RouterFunction<?> other) {  
+       return new RouterFunctions.DifferentComposedRouterFunction(this, other);  
+    }  
+  
+    /**  
+     * 添加一个新的路由到链表中
+     */    
+     default RouterFunction<T> andRoute(RequestPredicate predicate, HandlerFunction<T> handlerFunction) {  
+       return and(RouterFunctions.route(predicate, handlerFunction));  
+    }  
+  
+    /**  
+     * 添加一个嵌入的路由
+     */    
+     default RouterFunction<T> andNest(RequestPredicate predicate, RouterFunction<T> routerFunction) {  
+       return and(RouterFunctions.nest(predicate, routerFunction));  
+    }  
+  
+    /**  
+     * 根据函数进行路由的过滤
+     */    
+     default <S extends ServerResponse> RouterFunction<S> filter(HandlerFilterFunction<T, S> filterFunction) {  
+       return new RouterFunctions.FilteredRouterFunction<>(this, filterFunction);  
+    }  
+  
+    /**  
+     * 使用路由访问器来访问所有的路由器
+     */    
+     default void accept(RouterFunctions.Visitor visitor) {  
+       visitor.unknown(this);  
+    }  
+  
+    /**  
+     * 路由设置属性值
+     */    
+     default RouterFunction<T> withAttribute(String name, Object value) {  
+       Assert.hasLength(name, "Name must not be empty");  
+       Assert.notNull(value, "Value must not be null");  
+  
+       Map<String, Object> attributes = new LinkedHashMap<>();  
+       attributes.put(name, value);  
+       return new RouterFunctions.AttributesRouterFunction<>(this, attributes);  
+    }  
+  
+    /**  
+     * 设置属性值
+     */    
+     default RouterFunction<T> withAttributes(Consumer<Map<String, Object>> attributesConsumer) {  
+       Assert.notNull(attributesConsumer, "AttributesConsumer must not be null");  
+  
+       Map<String, Object> attributes = new LinkedHashMap<>();  
+       attributesConsumer.accept(attributes);  
+       return new RouterFunctions.AttributesRouterFunction<>(this, attributes);  
+    }   
+}
+```
+
+函数构建时是通过构建器模式进行函数构建**RouterFunctionBuilder**
+
+```java
+class RouterFunctionBuilder implements RouterFunctions.Builder {  
+  
+    private final List<RouterFunction<ServerResponse>> routerFunctions = new ArrayList<>();  
+  
+    private final List<HandlerFilterFunction<ServerResponse, ServerResponse>> filterFunctions = new ArrayList<>();  
+  
+    private final List<HandlerFilterFunction<ServerResponse, ServerResponse>> errorHandlers = new ArrayList<>();  
+  
+  
+    @Override  
+    public RouterFunctions.Builder add(RouterFunction<ServerResponse> routerFunction) {  
+       Assert.notNull(routerFunction, "RouterFunction must not be null");  
+       this.routerFunctions.add(routerFunction);  
+       return this;  
+    }
+    
+	public RouterFunction<ServerResponse> build() {  
+	    if (this.routerFunctions.isEmpty()) {  
+	       throw new IllegalStateException("No routes registered. Register a route with GET(), POST(), etc.");  
+	    }
+	    RouterFunction<ServerResponse> result = new BuiltRouterFunction(this.routerFunctions);  
+	  
+	    if (this.filterFunctions.isEmpty() && this.errorHandlers.isEmpty()) {  
+	       return result;  
+	    }  
+	    else { 
+		    // 将所有的routerFunction进行合并过滤一遍
+	       HandlerFilterFunction<ServerResponse, ServerResponse> filter =  
+	             Stream.concat(this.filterFunctions.stream(), this.errorHandlers.stream())  
+	                   .reduce(HandlerFilterFunction::andThen)  
+	                   .orElseThrow(IllegalStateException::new);  
+	  
+	       return result.filter(filter);  
+	    }  
+	}
+}
+```
+
+默认实现的函数接口如下，当请求来时调用**route()** 方法来进行请求的判断是否符合请求，如果符合就放回处理的函数接口
+
+```java
+private static final class DefaultRouterFunction<T extends ServerResponse> extends AbstractRouterFunction<T> {  
+  
+    private final RequestPredicate predicate;  
+  
+    private final HandlerFunction<T> handlerFunction;  
+  
+    public DefaultRouterFunction(RequestPredicate predicate, HandlerFunction<T> handlerFunction) {  
+       this.predicate = predicate;  
+       this.handlerFunction = handlerFunction;  
+    }  
+  
+    @Override  
+    public Optional<HandlerFunction<T>> route(ServerRequest request) {  
+       if (this.predicate.test(request)) {  
+          return Optional.of(this.handlerFunction);  
+       }  
+       else {
+          return Optional.empty();  
+       }  
+    }  
+  
+    @Override  
+    public void accept(Visitor visitor) {  
+       visitor.route(this.predicate, this.handlerFunction);  
+    }  
+  
+}
+```
+
+而通过**and()** 方法进行构建的函数接口**SameComposedRouterFunction** 分别划分为一级和二级，一级表示上一级的处理函数，二级则表示关联的下一级，当调用**route()** 先判断一级再判断二级以此类推
+
+```java
+static final class SameComposedRouterFunction<T extends ServerResponse> extends AbstractRouterFunction<T> {  
+  
+    private final RouterFunction<T> first;  
+  
+    private final RouterFunction<T> second;  
+  
+    public SameComposedRouterFunction(RouterFunction<T> first, RouterFunction<T> second) {  
+       this.first = first;  
+       this.second = second;  
+    }
+  
+    @Override  
+    public Optional<HandlerFunction<T>> route(ServerRequest request) {  
+       Optional<HandlerFunction<T>> firstRoute = this.first.route(request);  
+       if (firstRoute.isPresent()) {  
+          return firstRoute;  
+       }
+       else {  
+          return this.second.route(request);  
+       }  
+    }  
+  
+    @Override  
+    public void accept(Visitor visitor) {  
+       this.first.accept(visitor);  
+       this.second.accept(visitor);  
+    }  
+}
+```
