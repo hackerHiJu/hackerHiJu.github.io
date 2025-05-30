@@ -1410,7 +1410,7 @@ protected ModelAndView doResolveHandlerMethodException(HttpServletRequest reques
     ServletInvocableHandlerMethod exceptionHandlerMethod = this.getExceptionHandlerMethod(handlerMethod, exception);  
     if (exceptionHandlerMethod == null) {  
        return null;  
-    }  
+    }
       
     // 解析对应的参数  
     if (this.argumentResolvers != null) {  
@@ -1457,7 +1457,7 @@ protected ModelAndView doResolveHandlerMethodException(HttpServletRequest reques
 ```java
 @Configuration  
 public class RouterConfig {
-    @Bean  
+    @Bean
     public RouterFunction<ServerResponse> helloRoute() {
 	    // 创建 RouterFunctionBuilder 进行构建路由器
         return RouterFunctions.route()  
