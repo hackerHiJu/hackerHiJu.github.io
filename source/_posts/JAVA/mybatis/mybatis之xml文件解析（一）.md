@@ -146,7 +146,7 @@ public Configuration parse() {
 
 下面是 `XMLConfigBuilder` 类解析配置文件之后，对配置中的标签解析的流程，调用了 `14` 个方法
 
-![](images/mybatis-XMLConfigBuilder执行流程图.png)
+![](images/1.mybatis之xml源码解析（一）.png)
 
 下面是方法调用之后处理对应的逻辑，这里每一个处理出来的数据都会被存储在 `Configuration` 对象中，下面我们只看比较重要的解析方法
 

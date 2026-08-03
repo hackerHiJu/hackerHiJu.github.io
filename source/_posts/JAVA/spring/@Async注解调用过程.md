@@ -108,13 +108,13 @@ published: true
 
 ### AsyncAnnotationBeanPostProcessor
 
-![image-20220124154325968](images/image-20220124154325968.png)
+![image-20220124154325968](images/1.@Async注解调用过程.png)
 
 #### 1. setBeanFactory() 
 
 实现了 **BeanFactoryAware** 接口，初始化 AsyncAnnotationBeanPostProcessor 时会调用内部的**setBeanFactory() **方法设置切面
 
-![image-20220124155102429](images/image-20220124155102429.png)
+![image-20220124155102429](images/2.@Async注解调用过程.png)
 
 #### 2. postProcessAfterInitialization
 
@@ -147,7 +147,7 @@ published: true
 
 ### AnnotationAsyncExecutionInterceptor
 
-![image-20220124174036696](images/image-20220124174036696.png)
+![image-20220124174036696](images/3.@Async注解调用过程.png)
 
 ```java
 	/**

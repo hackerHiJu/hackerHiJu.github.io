@@ -1359,7 +1359,7 @@ public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) {
 
 ### 5.1 MapperFactoryBean
 
-![image-20240415150723811](images/image-20240415150723811.png)
+![image-20240415150723811](images/1.mybatis-plus之源码解析（二）.png)
 
 mybatis使用的是动态代理创建接口对象，然后通过 **SqlSessionTemplate** 将对应的代理对象添加到 **Configuration**中，在使用的时候通过 **getObject()** 方法获取到代理对象来进行处理
 
@@ -1613,7 +1613,7 @@ private MapperMethodInvoker cachedInvoker(Method method) throws Throwable {
 
 ### 5.8 调用逻辑
 
-![mapper调用流程](images/mapper调用流程.svg)
+![mapper调用流程](images/2.mybatis-plus之源码解析（二）.svg)
 
 
 
@@ -2678,7 +2678,7 @@ private Object getPropertyMappingValue(ResultSet rs, MetaObject metaResultObject
   - applyNestedResultMappings方法则处理当前结果集包含的内嵌字段
   - getPropertyMappingValue方法则处理嵌套查询中是否存在内嵌的查询id
 
-![](images/结果集处理流程.svg)
+![](images/3.mybatis-plus之源码解析（二）.svg)
 
 
 

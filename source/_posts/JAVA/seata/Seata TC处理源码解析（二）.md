@@ -173,7 +173,7 @@ private void onRequestMessage(ChannelHandlerContext ctx, RpcMessage rpcMessage) 
 
 TC端默认采用的消息处理器其中通过方法重载的方式通过不同的消息调用不同的 **handle()** 方法 
 
-![1673228741345](images/1673228741345.png)
+![1673228741345](images/1.Seata-TC处理源码解析（二）.png)
 
 所有的请求体都继承至 **AbstractTransactionRequestToTC**，例如：BranchRegisterRequest，AbstractTransactionRequestToTC中定义了一个方法 **setTCInboundHandler()**，这个方法要求传入一个 TCInboundHandler接口类型，这个接口定义了所有消息类型的处理方法；这里调用的 **handle()** 是一个抽象方法通过子类来进行实现
 

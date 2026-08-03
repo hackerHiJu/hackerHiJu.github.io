@@ -30,7 +30,7 @@ spring cloud stream是spring cloud抽象出来用于屏蔽各种中间件的对�
 
 官方所提供的架构图
 
-![SCSt with binder](images/SCSt-with-binder.png)
+![SCSt with binder](images/1.SpringCloud之Stream源码解析.png)
 
 spring cloud stream抽象出了几个比较核心的组件
 
@@ -138,7 +138,7 @@ public class AtomConsumerConfiguration {
 
 ## 三、源码
 
-![[images/构建流程.svg]]
+![[images/2.SpringCloud之Stream源码解析.svg]]
 
 ### 1. 自动装配
 
@@ -155,7 +155,7 @@ public class AtomConsumerConfiguration {
 	- inputBindingLifecycle：创建消费者的绑定器,默认为InputBindingLifecycle
 	- bindingsLifecycleController：消费者和生产者生命周期的控制器
 
-![image-20240223094047174](images/image-20240223094047174.png)
+![image-20240223094047174](images/3.SpringCloud之Stream源码解析.png)
 
 - BinderFactoryAutoConfiguration：绑定器需要的一些工厂类自动装配类
 	- messageHandlerMethodFactory: 消息处理的工厂方法,用于创建方法的执行器,默认使用DefaultMessageHandlerMethodFactory
@@ -166,13 +166,13 @@ public class AtomConsumerConfiguration {
 	- messageConverterConfigurer：消息转换器的配置类,默认 MessageConverterConfigurer,需要读取spring容器中的CompositeMessageConverter的bean
 	- compositeMessageChannelConfigurer：聚合管道的配置类,将StreamFunctionProperties配置的信息进行绑定管道
 
-![image-20240304150142738|0x0](images/image-20240304150142738.png)
+![image-20240304150142738|0x0](images/4.SpringCloud之Stream源码解析.png)
 
 - FunctionConfiguration：函数映射的自动装配，通过配置文件和代码中定义的函数式接口进行绑定
 	- functionBindingRegistrar：继承了 **InitializingBean** 启动时扫描出所有的函数接口创建代理工厂进行关联消费者和生产者,默认使用的是 FunctionBindingRegistrar
 
 
-![image-20240304162437979](images/image-20240304162437979.png)
+![image-20240304162437979](images/5.SpringCloud之Stream源码解析.png)
 
 #### FunctionBindingRegistrar
 
@@ -256,7 +256,7 @@ private static class FunctionBindingRegistrar implements InitializingBean, Appli
 
 这个 **spring .cloud.function** 提供的用于注册bean中函数接口的工厂类型
 
-![image-20240314161830153](images/image-20240314161830153.png)
+![image-20240314161830153](images/6.SpringCloud之Stream源码解析.png)
 
 比较核心的方法就是 **lookup、getNames** 方法
 
@@ -322,7 +322,7 @@ public Collection<Binding<Object>> createAndBindOutputs(
 - RocketMQBinderConfigurationProperties:rocketmq绑定器的额外映射配置,用于配置扩展信息的
 - RocketMQExtendedBindingProperties:用于配置文件中 **spring.cloud.stream.rocketmq**
 
-![[images/Stream配置包含关系.svg]]
+![[images/7.SpringCloud之Stream源码解析.svg]]
 
 
 ### 2. BindingService
@@ -423,7 +423,7 @@ public <T> Binding<T> bindProducer(T output, String outputName, boolean cache, @
 
 **Binder** 通过spring cloud stream抽象为中间件跟spring cloud的连接器,通过各个中间件厂商来分别进行实现,下面是 **Binder** 的依赖关系图可以看到 **rocketmq、kafka、rabbitmq** 等都实现了自己中间件的 **Binder** 绑定器
 
-![Binder](images/Binder.png)
+![Binder](images/8.SpringCloud之Stream源码解析.png)
 
 绑定器方法三个泛型类型：
 - T具体绑定的类型子类确定
@@ -787,7 +787,7 @@ public interface MessageProducer {
 
 Bindable 主要的目的是用户将当前服务中的 **函数方法或者其他的类** 跟对应的消费者或者生产者进行绑定, **Bindable依赖于 BindingTargetFactory** 进行处理,其中会通过 **FunctionConfiguration** 配置类型将容器中的函数接口bean创建为 **BindableFunctionProxyFactory** 进行关联
 
-![image-20240304154511279](images/image-20240304154511279.png)
+![image-20240304154511279](images/9.SpringCloud之Stream源码解析.png)
 
 BindableFunctionProxyFactory 工厂代理器来执行启动时将函数接口和消费topic进行绑定，是由 **FunctionConfiguration.FunctionBindingRegistrar** 进行注册到spring容器中进行创建函数和消费关联的
 
@@ -974,17 +974,17 @@ BindingTargetFactory 用于根据对应的名称创建 **MessageChannel** 消息
 - FluxMessageChannel：FluxMessageChannelBindingTargetFactory
 - SubscribeChannel：SubscribableChannelBindingTargetFactory
 
-![image-20240304155759352](images/image-20240304155759352.png)
+![image-20240304155759352](images/10.SpringCloud之Stream源码解析.png)
 
 ### 5. Binding
 
 目前 Binding 就使用了一个 **DefaultBinding** 类来记录一下绑定的相关信息
 
-![image-20240314165602801](images/image-20240314165602801.png)
+![image-20240314165602801](images/11.SpringCloud之Stream源码解析.png)
 
 ### 7. MessageChannel
 
-![image-20240305181215729](images/image-20240305181215729.png)
+![image-20240305181215729](images/12.SpringCloud之Stream源码解析.png)
 
 消息管道,spring cloud定义的规范接口用于关联服务中的业务代码和mq, 业务代码和mq只需要关注往管道中发送
 

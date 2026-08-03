@@ -26,7 +26,7 @@ https://blog.csdn.net/weixin_43915643/article/details/127682250?spm=1001.2014.30
 
 直接打开cmd控制台，输入 **docker version** 就可以直接使用 **docker** 命令了
 
-![1672301366692](images/1672301366692.png)
+![1672301366692](images/1.win11+wsl2安装k8s.png)
 
 ## 6. 安装KinD
 
@@ -87,15 +87,15 @@ networking:
   apiServerPort: 6443
 ```
 
-![1672301790305](images/1672301790305.png)
+![1672301790305](images/2.win11+wsl2安装k8s.png)
 
-![1672301817101](images/1672301817101.png)
+![1672301817101](images/3.win11+wsl2安装k8s.png)
 
 > kubectl cluster-info #查看集群的信息
 
 访问： [https://127.0.0.1:49153](https://127.0.0.1:49153/) 就可以看到已经部署成功了
 
-![1672282332259](images/1672282332259.png)
+![1672282332259](images/4.win11+wsl2安装k8s.png)
 
 ### 6.2 多机部署
 
@@ -139,7 +139,7 @@ nodes:
 kind create cluster --name wslkindmultinodes --config ./kind-3nodes.yaml
 ```
 
-![1672301926297](images/1672301926297.png)
+![1672301926297](images/5.win11+wsl2安装k8s.png)
 
 
 
@@ -445,7 +445,7 @@ spec:
 >
 > http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
 
-![1672302079892](images/1672302079892.png)
+![1672302079892](images/6.win11+wsl2安装k8s.png)
 
 ## 8. ingress-nginx转发服务
 
@@ -477,7 +477,7 @@ docker tag registry.k8s.io/ingress-nginx/controller registry.k8s.io/ingress-ngin
 
 下面拉取了镜像之后就有了 tag名称，需要手动将镜像包加载到容器中的 k8s里面去，然后k8s就不会再去拉取镜像包了
 
-![1672717163846](images/1672717163846.png)
+![1672717163846](images/7.win11+wsl2安装k8s.png)
 
 加载镜像包到k8s容器中
 
@@ -493,7 +493,7 @@ kind load docker-image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v20220
 docker exec -it k8s-test-control-plane crictl images
 ```
 
-![1672717376568](images/1672717376568.png)
+![1672717376568](images/8.win11+wsl2安装k8s.png)
 
 等待服务启动完成
 
@@ -507,9 +507,9 @@ kubectl wait --namespace ingress-nginx --for=condition=ready pod --selector=app.
 
 创建 **ingress.yaml** 配置文件，注意 **kinD** 创建集群的时候我将 **node** 节点的 **80** 端口给映射出来了，而**ingress-nginx** 部署时通过 **ingress-nginx-controller** 开放出了 **80** 端口，所以具体的服务暴露就是：**docker映射出80端口，然后部署一个ingress-nginx-controller的Service使用NodePort类型开放出80端口** 这样就可以通过 **localhost** 进行访问了
 
-![1672725074252](images/1672725074252.png)
+![1672725074252](images/9.win11+wsl2安装k8s.png)
 
-![1672725020859](images/1672725020859.png)
+![1672725020859](images/10.win11+wsl2安装k8s.png)
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -535,9 +535,9 @@ spec:
                   number: 443
 ```
 
-![1672725214747](images/1672725214747.png)
+![1672725214747](images/11.win11+wsl2安装k8s.png)
 
-![1672725597041](images/1672725597041.png)
+![1672725597041](images/12.win11+wsl2安装k8s.png)
 
 先进行节点的容器里面
 
@@ -549,5 +549,5 @@ spec:
 kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | awk '/dashboard-admin/{print $1}')
 ```
 
-![1672725461217](images/1672725461217.png)
+![1672725461217](images/13.win11+wsl2安装k8s.png)
 

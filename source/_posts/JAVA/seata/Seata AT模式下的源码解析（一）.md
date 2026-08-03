@@ -91,7 +91,7 @@ public @interface GlobalTransactional {
 
 全局事务注解扫描器，继承了 **AbstractAutoProxyCreator** 用于在 **bean** 对象在创建时，对打了 **@GlobalTransactional** 注解的类添加 **Aop** 支持；
 
-![](images/GlobalTransactionScanner.png)
+![](images/1.Seata-AT模式下的源码解析（一）.png)
 
 其中 **GlobalTransactionScanner** 实现了 **wrapIfNecessary()** 方法；这个方法是在 **spring** 初始化完毕之后通过 **postProcessAfterInitialization()** 中进行调用，在 **spring aop** 进行增强时所用到的两个接口：
 
@@ -633,7 +633,7 @@ public void begin(int timeout, String name) throws TransactionException {
 
 在一阶段的调用流程是
 
-![](images/seata%20AT%E6%A8%A1%E5%BC%8F%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.svg)
+![](images/2.Seata-AT模式下的源码解析（一）.png)
 
 ### 6.1 DataSource
 
@@ -641,7 +641,7 @@ Seata最重要的一个功能就是对 **DataSource** 进行了代理，在用�
 
 seata中代理对数据进行代理的方式以及调用联调大致如下，seata对 **数据源、连接对象、预编译对象** 都进行了代理，最后通过 **ExecuteTemplate** 对象来执行解析 sql创建镜像等操作
 
-![](images/seata%E6%95%B0%E6%8D%AE%E6%BA%90%E8%B0%83%E7%94%A8%E9%93%BE.svg)
+![](images/3.Seata-AT模式下的源码解析（一）.png)
 
 ### 6.2 SeataAutoDataSourceProxyCreator
 
@@ -726,7 +726,7 @@ public interface SeataDataSourceProxy extends DataSource {
 }
 ```
 
-![](images/DataSourceProxy.png)
+![](images/4.Seata-AT模式下的源码解析（一）.png)
 
 ### 6.5 DataSourceProxy
 
@@ -745,7 +745,7 @@ public ConnectionProxy getConnection() throws SQLException {
 
 ### 6.6 ConnectionProxy
 
-![](images/ConnectionProxy.png)
+![](images/5.Seata-AT模式下的源码解析（一）.png)
 
 #### createStatement()
 
@@ -848,7 +848,7 @@ private void processGlobalTransactionCommit() throws SQLException {
 
 ### 6.7 PreparedStatementProxy
 
-![](images/StatementProxy.png)
+![](images/6.Seata-AT模式下的源码解析（一）.png)
 
 **PreparedStatementProxy** 覆写的 **execute()** 方法并没有做什么事，直接通过 **ExecuteTemplate** 来执行的
 
@@ -867,7 +867,7 @@ public boolean execute() throws SQLException {
   - AntlrMySQLRecognizerFactory
 - SQLRecognizer：sql识别器将对应的sql语句解析成不同的类型，下面是实现类，数据库不同实现的类型也不同
 
-![1668495467504](images/1668495467504.png)
+![1668495467504](images/7.Seata-AT模式下的源码解析（一）.png)
 
 ```java
 public static <T, S extends Statement> T execute(List<SQLRecognizer> sqlRecognizers,
@@ -964,7 +964,7 @@ public static <T, S extends Statement> T execute(List<SQLRecognizer> sqlRecogniz
 
 根据sql识别器，识别出sql的类型是 insert、update还是delete等类型，根据不同的类型创建不同的sql执行器
 
-![](images/Executor.png)
+![](images/8.Seata-AT模式下的源码解析（一）.png)
 
 **ExecuteTemplate** 中对sql进行解析之后创建出不同类型的 **Eexcutor** 实现类，以 **Insert** sql为例子，解析出的类型是 **MysqlInsertOrUpdateExecutor** 该类型并没有实现 **execute(args)** 方法，往上找调用的方法在 **BaseTrasactionalExecutor** 类中
 
@@ -1155,7 +1155,7 @@ public class RMClient {
 - RmNettyRemotingClient：资源管理器客户端，管理分支事务处理的资源，驱动分支事务提交或回滚，与TC进行通信以注册分支事务和报告分支事务的状态
 - TmNettyRemotiongClient：事务管理器，定义全局事务的范围，开始全局事务、提交或回滚全局事务
 
-![](images/RemotingClient.png)
+![](images/9.Seata-AT模式下的源码解析（一）.png)
 
 #### 7.3.1 TmNettyRemotiongClient
 
@@ -1284,7 +1284,7 @@ class ClientHandler extends ChannelDuplexHandler {
 - RmBranchRollbackProcessor：分支回滚处理器
 - RmUndoLogProcessor：undolog删除处理器
 
-![1668743024863](images/1668743024863.png)
+![1668743024863](images/10.Seata-AT模式下的源码解析（一）.png)
 
 ### 7.4 MessageTypeAware（请求实体）
 
@@ -1305,7 +1305,7 @@ public interface MessageTypeAware {
 
 对于客户端来说，请求体就是 **TM --> TC** ，seata中服务端的实体处理结构就是下面这样，抽象出了一个 **AbstractTransactionRequestToTC** 的抽象类，（tm发起的请求实体，tc就需要转换成对应的实体处理）
 
-![RmToTc](images/RmToTc.png)
+![RmToTc](images/11.Seata-AT模式下的源码解析（一）.png)
 
 
 
@@ -1644,7 +1644,7 @@ public void undo(DataSourceProxy dataSourceProxy, String xid, long branchId) thr
 
 方法中真正执行日志回滚的是 **AbstractUndoExecutor** 类型，这是一个抽象类，通过工厂方法进行创建，根据**数据库**类型以及 **sql的类型** 获取到对应的执行器
 
-![](images/AbstractUndoExecutor.png)
+![](images/12.Seata-AT模式下的源码解析（一）.png)
 
 io.seata.rm.datasource.undo.AbstractUndoExecutor#executeOn：
 

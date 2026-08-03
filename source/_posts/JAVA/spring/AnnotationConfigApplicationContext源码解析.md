@@ -37,7 +37,7 @@ published: true
 
 ### 1. 常用上下文
 
-![image-20211008142513323](images/image-20211008142513323.png)
+![image-20211008142513323](images/1.AnnotationConfigApplicationContext源码解析.png)
 
 - BeanFactory：提供了最基础的方法
 - ApplicationContext：提供更多的企业级功能（BeanFactory子接口），只负责实例化，配置，组装之前的bean，容器通过读取元数据进行实例化、配置和组装
@@ -48,7 +48,7 @@ published: true
 
 ### 2. AnnotationConfigApplicationContext
 
-![image-20211008143122631](images/image-20211008143122631.png)
+![image-20211008143122631](images/2.AnnotationConfigApplicationContext源码解析.png)
 
 #### 2.1 成员变量
 
@@ -59,7 +59,7 @@ published: true
 
 提供了4个构造函数，一般使用的最多的是传入 Class对象的构造函数比较多。
 
-![image-20220214141445121](images/image-20220214141445121.png)
+![image-20220214141445121](images/3.AnnotationConfigApplicationContext源码解析.png)
 
 ```java
 public AnnotationConfigApplicationContext(Class<?>... componentClasses) {
@@ -601,7 +601,7 @@ protected void initApplicationEventMulticaster() {
 
 初始化其他特殊的bean在特定上下文子容器中；一般与web上下文相关的容器有关
 
-![image-20220411094513759](images/image-20220411094513759.png)
+![image-20220411094513759](images/4.AnnotationConfigApplicationContext源码解析.png)
 
 
 
@@ -760,7 +760,7 @@ protected void finishRefresh() {
 
 ## 三、流程图
 
-![1.spring源码-ioc流程](images/spring-ioc.png)
+![1.spring源码-ioc流程](images/5.AnnotationConfigApplicationContext源码解析.png)
 
-![2.spring源码-ioc流程2](images/spring-ioc2.png)
+![2.spring源码-ioc流程2](images/6.AnnotationConfigApplicationContext源码解析.png)
 

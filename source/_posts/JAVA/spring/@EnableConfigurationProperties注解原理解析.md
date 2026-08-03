@@ -101,7 +101,7 @@ class EnableConfigurationPropertiesRegistrar implements ImportBeanDefinitionRegi
 
 配置对象的处理器,实现了 **BeanPostProcessor** 接口,在bean创建前后会进行执行
 
-![image-20240223102255874](images/image-20240223102255874.png)
+![image-20240223102255874](images/1.@EnableConfigurationProperties注解原理解析.png)
 
 ### 1. postProcessBeforeInitialization()
 

@@ -120,7 +120,7 @@ private static BeanDefinition registerOrEscalateApcAsRequired(
 
 
 
-![](images/image-20220426143449403.png)
+![](images/1.@Transactional注解源码解析.png)
 
 
 
@@ -294,7 +294,7 @@ abstract class TransactionAttributeSourcePointcut extends StaticMethodMatcherPoi
 	}
 ```
 
-![image-20220426143449403](images/InfrastructureAdvisorAutoProxyCreator.png)
+![image-20220426143449403](images/2.@Transactional注解源码解析.png)
 
 看上面的依赖图能够发现 **TransactionAttributeSourcePointcut** 本身类就实现了 **MethodMatcher** 类型，获取方法匹配时默认就会返回本身，所以调用方法匹配时，会调用到自己的 **matches()**
 
@@ -1039,7 +1039,7 @@ protected void commitTransactionAfterReturning(@Nullable TransactionInfo txInfo)
 
 ## 6. 流程图
 
-![](images/4.spring源码-事务流程.png)
+![](images/3.@Transactional注解源码解析.png)
 
 
 

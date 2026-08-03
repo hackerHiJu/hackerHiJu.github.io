@@ -60,7 +60,7 @@ private ConfigurableEnvironment prepareEnvironment(
 - systemProperties：应用程序启动的相关配置
 - systemEnvironment：环境遍历相关的配置
 
-![image-20220321180747068](images/image-20220321180747068.png)
+![image-20220321180747068](images/1.SpringBoot中是如何加载到指定的文件.png)
 
 ```java
 private ConfigurableEnvironment getOrCreateEnvironment() {
@@ -163,7 +163,7 @@ public void multicastEvent(ApplicationEvent event, @Nullable ResolvableType even
 
 通过SpringFactoriesLoader.loadFactories(EnvironmentPostProcessor.class,getClass().getClassLoader()); 的方法找到 spring.factories 中 **EnvironmentPostProcessor** 的实现类执行处理，目前加载出来的对象如下图：
 
-![image-20220322154620557](images/image-20220322154620557.png)
+![image-20220322154620557](images/2.SpringBoot中是如何加载到指定的文件.png)
 
 其中还会将**ConfigFileApplicationListener** 也添加到处理器当中进行处理可以看到当前类也实现了 **EnvironmentPostProcessor** 类
 
@@ -231,7 +231,7 @@ public void load() {
 
 初始时的环境配置
 
-![image-20220322155318028](images/image-20220322155318028.png)
+![image-20220322155318028](images/3.SpringBoot中是如何加载到指定的文件.png)
 
 **getSearchLocations()** 获取到需要搜寻的路径，优先读取 **spring配置中的指定的路径： spring.config.additional-location、spring.config.location**
 
@@ -284,17 +284,17 @@ private void load(String location, String name, Profile profile,
 		}
 ```
 
-![image-20220322160348013](images/image-20220322160348013.png)
+![image-20220322160348013](images/4.SpringBoot中是如何加载到指定的文件.png)
 
-![image-20220322161039583](images/image-20220322161039583.png)
+![image-20220322161039583](images/5.SpringBoot中是如何加载到指定的文件.png)
 
 最后根据路径和环境拼接出配置文件的路径信息
 
-![image-20220322161238719](images/image-20220322161238719.png)
+![image-20220322161238719](images/6.SpringBoot中是如何加载到指定的文件.png)
 
 最后添加到环境当中
 
-![image-20220322161840965](images/image-20220322161840965.png)
+![image-20220322161840965](images/7.SpringBoot中是如何加载到指定的文件.png)
 
 
 
@@ -469,7 +469,7 @@ private ConfigurableApplicationContext bootstrapServiceContext(
 
 spring cloud启动子容器的时候指定了容器的引导类，SpringApplication会将PrimarySources注入到SpringBeanFactory中后续进行加载，正常的情况下是会注入 @SpringBootApplication注解的类
 
-![image-20241212174650636](images/image-20241212174650636.png)
+![image-20241212174650636](images/8.SpringBoot中是如何加载到指定的文件.png)
 
 ```java
 private void prepareContext(DefaultBootstrapContext bootstrapContext, ConfigurableApplicationContext context,

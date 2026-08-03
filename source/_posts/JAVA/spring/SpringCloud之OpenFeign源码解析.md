@@ -645,7 +645,7 @@ feign中定义的客户端顶级接口，在 **FeignClientFactoryBean** 中进�
 - LoadBalancerFeignClient：feign提供的默认负载客户端
 - FeignBlockingLoadBalancerClient：spring cloud提供的自定义负载策略器，目前用不到
 
-![image-20230414165555786](images/image-20230427095702036.png)
+![image-20230414165555786](images/1.SpringCloud之OpenFeign源码解析.png)
 
 ### 9.1 LoadBalancerFeignClient
 
@@ -745,7 +745,7 @@ public FeignLoadBalancer create(String clientName) {
 
 核心的实现都在父类 **AbstractLoadBalancerAwareClient** 中
 
-![image-20230427094215184](images/image-20230414165555786.png)
+![image-20230427094215184](images/2.SpringCloud之OpenFeign源码解析.png)
 
 最终 **Feign** 会为每一个接口都创建一个 **FeignLoadBalancer** 进行负载的客户端，通过 **FeignLoadBalancer** 进行服务的选择然后替换掉服务的请求地址；通过 **LoadBalancerFeignClient** 可以看到实际调用的是 **executeWithLoadBalancer()** 方法也是其父类 **AbstractLoadBalancerAwareClient** 中实现的
 
@@ -855,8 +855,8 @@ public interface ILoadBalancer {
 }
 ```
 
-![image-20230427095702036](images/image-20230427094215184.png)
+![image-20230427095702036](images/3.SpringCloud之OpenFeign源码解析.png)
 
 ## 总结
 
-![](images/openFeign流程图.png)
+![](images/4.SpringCloud之OpenFeign源码解析.png)

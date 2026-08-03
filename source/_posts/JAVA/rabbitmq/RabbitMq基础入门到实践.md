@@ -54,7 +54,7 @@ rabbitmq地址：https://packagecloud.io/rabbitmq/rabbitmq-server
 
 > rabbitmq-plugins enable rabbitmq_management
 
-![image-20220215100441544](images/image-20220215100441544.png)
+![image-20220215100441544](images/1.RabbitMq入门到实践.png)
 
 ### 1.10 重启服务
 
@@ -62,7 +62,7 @@ rabbitmq地址：https://packagecloud.io/rabbitmq/rabbitmq-server
 
 ### 1.11 访问服务
 
-![image-20220215100700103](images/image-20220215100700103.png)
+![image-20220215100700103](images/2.RabbitMq入门到实践.png)
 
 ### 1.12 添加用户
 
@@ -72,7 +72,7 @@ rabbitmq地址：https://packagecloud.io/rabbitmq/rabbitmq-server
 >
 > rabbitmqctl set_user_tags root administrator  #设置权限为管理员
 
-![image-20220215100858867](images/image-20220215100858867.png)
+![image-20220215100858867](images/3.RabbitMq入门到实践.png)
 
 ## 2. centos7安装rabbitmq（源码）
 

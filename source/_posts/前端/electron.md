@@ -840,7 +840,7 @@ export default {
 
 - 渲染作用域
 
-![Slot explanation diagram](images/slot.png)
+![Slot explanation diagram](images/1.electron.png)
 
 - 备用内容
 
@@ -919,7 +919,7 @@ app.component('todo-list', {
 </todo-list>
 ```
 
-![Scoped slot diagram](images/scoped-slot.png)插槽综合例子：
+![Scoped slot diagram](images/2.electron.png)插槽综合例子：
 
 ```vue
 // Demo.vue
@@ -1087,9 +1087,9 @@ app.mount('#app')
 
 # 四、Pinia2
 
-![vuex](images/vuex.png)
+![vuex](images/3.electron.png)
 
-![img](images/p3.itc.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto)
+![img](images/4.electron)
 
 pinia 中文文档：https://pinia.web3doc.top/
 

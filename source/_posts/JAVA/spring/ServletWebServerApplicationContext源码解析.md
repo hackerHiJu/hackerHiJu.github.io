@@ -19,11 +19,11 @@ published: true
 
 ## 1.1 依赖图
 
-![](images/ServletWebServerApplicationContext.png)
+![](images/1.ServletWebServerApplicationContext源码解析.png)
 
 从上面的依赖图中可以看到 **ServletWebServerApplicationContext** 与 **AnnotationConfigApplicationContext** 容器同都是继承至 **AbstractApplicationContext** 类，而 **ServletWebServerApplicationContext** 容器是 **org.springframework.boot.web.servlet.context** 提供出来的能力；而**AnnotationConfigApplicationContext** 则是由 **org.springframework.context.annotation** 提供出来的能力，一个是 springboot提供，一个是spring提供。
 
-![1655899551546](images/1655899551546.png)
+![1655899551546](images/2.ServletWebServerApplicationContext源码解析.png)
 
 ## 1.2 启动方式
 
@@ -57,7 +57,7 @@ try {
 }
 ```
 
-![1655900156845](images/1655900156845.png)
+![1655900156845](images/3.ServletWebServerApplicationContext源码解析.png)
 
 上面是 **AbstractApplicationContext.refresh()** 的方法，下面是复写；可以看到这个方法在 **refresh()** 调用时只注册了一个注入器，扫描了指定的包路径，注册指定的配置对象后就没有做什么特别的事了
 
@@ -81,9 +81,9 @@ protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactor
 
 **AbstractApplicationContext.onRefresh()** 方法什么都没有做，交由子类实现，下面发现最低级的实现类是 **ServletWebServerApplicationContext** 也就是 **AnnotationConfigServletWebServerApplicationContext** 的父类
 
-![1655900282197](images/1655900282197.png)
+![1655900282197](images/4.ServletWebServerApplicationContext源码解析.png)
 
-![1655900336522](images/1655900336522.png)
+![1655900336522](images/5.ServletWebServerApplicationContext源码解析.png)
 
 下面看一下 **ServletWebServerApplicationContext.onRefresh()** 如何实现的
 
@@ -251,7 +251,7 @@ public ServletContextInitializerBeans(ListableBeanFactory beanFactory,
 
 其中 **ServletRegistrationBean** 可以看到在 springboot自动装配时，就以及将其注入到容器中包括创建好了 **DispatcherServlet** 对象
 
-![1655903880942](images/1655903880942.png)
+![1655903880942](images/6.ServletWebServerApplicationContext源码解析.png)
 
 #### onStartup()
 
@@ -261,7 +261,7 @@ public ServletContextInitializerBeans(ListableBeanFactory beanFactory,
 
 下面是 **RegistrationBean** 体系的依赖实现
 
-![1655904169455](images/1655904169455.png)
+![1655904169455](images/7.ServletWebServerApplicationContext源码解析.png)
 
 ### 1.4.1 DispatcherServletRegistrationBean
 
@@ -417,7 +417,7 @@ protected void configure(FilterRegistration.Dynamic registration) {
 
 下面的源码会比较绕，因为 **tomcat** 包中，大部分的类都实现了 **LifecycBase** 这个类，所以调用对应的 **start()** 方法都会先调父类，然后在调子类的覆写方法，下面调用的方法栈
 
-![](images/tomcat回调Initializer函数.png)
+![](images/8.ServletWebServerApplicationContext源码解析.png)
 
 通过上面的源码可以发现在 **TomcatServletWebServerFactory** 中调用 **getWebServer()** 方法，创建了一个 **Tomcat** 实例对象，其中 **tomcat.getHost()** 会创建一个 **StandardHost** 对象存入到 **Tomcat** 对象的引擎当中
 
@@ -481,7 +481,7 @@ protected void configureContext(Context context, ServletContextInitializer[] ini
 
 下面没有 **Tomcat** 的源码所以直接截图了，下面方法，重点在 **addChild()** 添加子节点方法中
 
-![1655951582771](images/1655951582771.png)
+![1655951582771](images/9.ServletWebServerApplicationContext源码解析.png)
 
 下面的代码就是在创建 **TomcatWebServer** 直接初始化，调用 **tomcat.start()** 的方法
 
@@ -531,45 +531,45 @@ private void initialize() throws WebServerException {
 
 下面就是全截图
 
-![1655952174777](images/1655952174777.png)
+![1655952174777](images/10.ServletWebServerApplicationContext源码解析.png)
 
 会创建一个 StandardSerivce 存入到 server中
 
-![1655952194927](images/1655952194927.png)
+![1655952194927](images/11.ServletWebServerApplicationContext源码解析.png)
 
 **server.start()** 调用的是父类 **LifecycleBase** 的方法
 
-![1655952311466](images/1655952311466.png)
+![1655952311466](images/12.ServletWebServerApplicationContext源码解析.png)
 
 调用到了 **StandardServer** 的 **startInternal()** 方法，其中调用了上面创建的 **StandardService** 的 **start()** 方法，由于 **StandardServer** 和 **StandardService** 两个对象都实现了 **LifecycleBase** 对象，所以调用的 **start()** 方法都是父类的，然后父类又调用 **startInternal()** 方法，最终调用到 **StandardService** 的 **startInternal()** 方法
 
 上面流程就是：server ---> base.start ----> server.startInernal---> service.start ---> base.start ----> service.startInernal
 
-![1655952339824](images/1655952339824.png)
+![1655952339824](images/13.ServletWebServerApplicationContext源码解析.png)
 
 下面的代码就是 **StandardService.startInternal()**  的方法，可以看到实际上调用了 **Engine** 的 **start()** 而 **Engine** 的 **start()** 方法还是调用了父类 **LifecycleBase** 的，然后通过父类调用子类实现的 **startInternal()**
 
-![1655952693849](images/1655952693849.png)
+![1655952693849](images/14.ServletWebServerApplicationContext源码解析.png)
 
 下面就是 **StandardEngine** 的调用，调用到 **ContainerBase** 的方法
 
-![1655952978090](images/1655952978090.png)
+![1655952978090](images/15.ServletWebServerApplicationContext源码解析.png)
 
 
 
-![1655953079587](images/1655953079587.png)
+![1655953079587](images/16.ServletWebServerApplicationContext源码解析.png)
 
 下面的代码会调用到 **StandardContext** 的 **startInteral()** 方法中，在最下面的代码中就回去到了所有的 **initializers** 前面的代码看到是通过 **TomcatStarter** 去实现了 **ServletContainerInitializer** 接口，所以这里就可以调用到springboot添加的回调函数
 
-![1655953104133](images/1655953104133.png)
+![1655953104133](images/17.ServletWebServerApplicationContext源码解析.png)
 
-![1655953206513](images/1655953206513.png)
+![1655953206513](images/18.ServletWebServerApplicationContext源码解析.png)
 
-![1655953269253](images/1655953269253.png)
+![1655953269253](images/19.ServletWebServerApplicationContext源码解析.png)
 
 # 2. 总结
 
-![](images/5.springmvc启动挂载流程.png)
+![](images/20.ServletWebServerApplicationContext源码解析.png)
 
 
 

@@ -171,7 +171,7 @@ public interface WebMvcConfigurer {
 
 请求映射器的处理器，用于解析 @RequestMapping 注解，将对应的controller中的方法解析成对应的 **HandlerMethod**
 
-![image-20240428154241191](images/image-20240428154241191.png)
+![image-20240428154241191](images/1.Spring-MVC源码流程解析.png)
 
 ### 3.2 AbstractHandlerMethodMapping
 
@@ -311,7 +311,7 @@ public void register(T mapping, Object handler, Method method) {
 
 下面就是 **DispatcherServlet** 的继承图，从 **HttpServlet** 截至到上面部分都是 **Javax.servlet.http** 所提供的功能，而 **HttpServletBean** 开始就是 **spring** 实现的功能
 
-![](images/DispatcherServlet.png)
+![](images/2.Spring-MVC源码流程解析.png)
 
 DispatcherServlet比较核心的属性有以下：
 
@@ -755,7 +755,7 @@ protected void doDispatch(HttpServletRequest request, HttpServletResponse respon
 - RouterFunctionMapping：函数式处理器映射器
 - BeanNameUrlHandlerMapping：bean名称处理器映射器
 
-![](images/Spring%20MVC源码流程解析-1747122530156.png)
+![](images/3.Spring-MVC源码流程解析.png)
 代码中返回的是一个**HandlerExecutionChain** 实体类
 
 ```java
@@ -934,7 +934,7 @@ protected HandlerAdapter getHandlerAdapter(Object handler) throws ServletExcepti
 - SimpleControllerHandlerAdapter：处理Controller实现类
 - SimpleServletHandlerAdapter：处理Servlet实现类
 
-![](images/Spring%20MVC源码流程解析-1747128190774.png)
+![](images/4.Spring-MVC源码流程解析.png)
 
 #### 4.1.4 handle()
 
@@ -1065,7 +1065,7 @@ public void invokeAndHandle(ServletWebRequest webRequest, ModelAndViewContainer 
 - PathVariableMapMethodArgumentResolver：@PathVariable注解的处理
 - RequestResponseBodyMethodProcessor：@RequestBody注解的处理同时也是ResponseBody的处理器
 
-![](images/Spring%20MVC源码流程解析-1747128987857.png)
+![](images/5.Spring-MVC源码流程解析.png)
 ```java
 public Object invokeForRequest(NativeWebRequest request, @Nullable ModelAndViewContainer mavContainer,  
        Object... providedArgs) throws Exception {  

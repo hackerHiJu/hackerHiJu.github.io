@@ -203,7 +203,7 @@ public class ComponeentConfig {
 
 ### 2.1 ConfigurationClassPostProcessor
 
-![image-20220415112040241](images/image-20220415112040241.png)
+![image-20220415112040241](images/1.SpringBean创建以及依赖注入源码解析.png)
 
 当前类实现了 **BeanDefinitionRegistryPostProcessor** 以及 **BeanFactoryPostProcessor** 也就是会在**refrsh()** 方法中的 **invokeBeanFactoryPostProcessors()** 进行处理
 
@@ -1009,7 +1009,7 @@ private void loadBeanDefinitionsForBeanMethod(BeanMethod beanMethod) {
 
 # 二、Bean创建
 
-![image-20220425214145277](images/image-20220425214145277.png)
+![image-20220425214145277](images/2.SpringBean创建以及依赖注入源码解析.png)
 
 以下就是 **BeanDefinition** 的结构：
 
@@ -1021,7 +1021,7 @@ private void loadBeanDefinitionsForBeanMethod(BeanMethod beanMethod) {
 - ConfigurationClassBeanDefinition：在扫描@Cnfiguration注解后，在进行处理时，会将其封装成当前类型进行处理
 - RootBeanDefinition：最终注入的根bean定义，在进行创建bean时会将其他的bean定义类型进行合并
 
-![image-20220425113906788](images/image-20220425113906788.png)
+![image-20220425113906788](images/3.SpringBean创建以及依赖注入源码解析.png)
 
 
 

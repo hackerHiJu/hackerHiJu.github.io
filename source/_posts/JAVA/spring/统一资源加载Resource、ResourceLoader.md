@@ -17,7 +17,7 @@ published: true
 
 spring中对文件资源的定义，并且进行区分
 
-![image-20220117154734186](images/image-20220117163248347.png)
+![image-20220117154734186](images/1.统一资源加载Resource、ResourceLoader.png)
 
 - FileSystemResource：对文件系统进行的封装，FileSystemResource 使用 NIO2 API进行读/写交互
 - ByteArrayResource：对字节数组进行的封装，如果通过 InputStream 形式访问该类型的资源，该实现会根据字节数组的数据构造一个相应的 ByteArrayInputStream。
@@ -50,7 +50,7 @@ public interface ResourceLoader {
 
 ```
 
-![image-20220117163248347](images/image-20220117154734186.png)
+![image-20220117163248347](images/2.统一资源加载Resource、ResourceLoader.png)
 
 ### 2.1 DefaultResourceLoader
 
@@ -242,7 +242,7 @@ public class PathMatchingResourcePatternResolver implements ResourcePatternResol
 
 确定根路径的方法 determineRootDir() 方法
 
-![image-20220117172234913](images/image-20220117172234913.png)
+![image-20220117172234913](images/3.统一资源加载Resource、ResourceLoader.png)
 
 ```java
 protected Resource[] findPathMatchingResources(String locationPattern) throws IOException {

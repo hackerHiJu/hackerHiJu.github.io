@@ -27,15 +27,15 @@ published: true
 
 根据编译spring版本来决定使用什么版本的gradle。查看源码下 **\gradle\wrapper\gradle-wrapper.properties** 中需要什么版本
 
-![1641477074726](images/1641477074726.png)
+![1641477074726](images/1.spring5.3.x源码构建.png)
 
 下载好gradle-7.2版本，配置环境变量
 
-![1641477115375](images/1641477115375.png)
+![1641477115375](images/2.spring5.3.x源码构建.png)
 
 防止spring每次编译都去下载gradle安装包，将distributionUrl改成本地文件路径
 
-![1641477074726](images/1641477037289.png)
+![1641477074726](images/3.spring5.3.x源码构建.png)
 
 ### 三、编译spring
 
@@ -49,9 +49,9 @@ buildscript {
  }
 ```
 
-![1641477375151](images/1641477503881.png)
+![1641477375151](images/4.spring5.3.x源码构建.png)
 
-![1641477385928](images/1641477610683.png)
+![1641477385928](images/5.spring5.3.x源码构建.png)
 
 ```gradle
 repositories {
@@ -67,21 +67,21 @@ repositories {
 
 设置项目sdk版本
 
-![1641477503881](images/1641477626171.png)
+![1641477503881](images/6.spring5.3.x源码构建.png)
 
 **找到spring-oxm以及spring-core下的compileTestjava进行编译**
 
 编译成功后，编译整个工程，spring>build>build
 
-![1641477564279](images/1641477375151.png)
+![1641477564279](images/7.spring5.3.x源码构建.png)
 
 ### 四、创建新的子模块
 
-![1641477610683](images/1641477385928.png)
+![1641477610683](images/8.spring5.3.x源码构建.png)
 
 引入依赖
 
-![1641477626171](images/1641478066239.png)
+![1641477626171](images/9.spring5.3.x源码构建.png)
 
 **再次编译spring项目，成功后运行测试代码**
 
@@ -110,15 +110,15 @@ public class ApplicationTestDemo {
 
 **最后可以去掉spring模块下面的 src/checkstyle/checkstyle.xml**，内容注释掉，风格检查
 
-![1641477751090](images/1641477564279.png)
+![1641477751090](images/10.spring5.3.x源码构建.png)
 
 ### 五、异常问题
 
-![1641478038222](images/1641477751090.png)
+![1641478038222](images/11.spring5.3.x源码构建.png)
 
-![1641478066239](images/1641478038222.png)
+![1641478066239](images/12.spring5.3.x源码构建.png)
 
 ### 六、模块说明
 
-![1641478101533](images/1641478101533.png)
+![1641478101533](images/13.spring5.3.x源码构建.png)
 

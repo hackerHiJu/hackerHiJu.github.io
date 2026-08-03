@@ -55,7 +55,7 @@ public interface DiscoveryClient extends Ordered {
 
 目前通过实现可以看到有 **eureka和nacos** 的实现类，而导入客户端发现功能的是通过 **@EnableDiscoveryClient** 注解进行导入
 
-![1678438792865](images/1678687794621.png)
+![1678438792865](images/1.SpringCloud之Spring-Cloud-Commons源码解析.png)
 
 Spring Cloud Commons 提供了 **@EnableDiscoveryClient** 注解。这将寻找 **META-INF/spring.factories** 文件中 **DiscoveryClient** 接口的实现类，但是一般 **nacos和eureka** 并没有通过配置文件的方式进行导入，都是通过自动装配类进行导入的
 
@@ -209,7 +209,7 @@ public abstract class AbstractAutoServiceRegistration<R extends Registration>
 
 服务注册工厂，从源码中可以看到 **Eureka和Nacos** 都各自对其进行了复写
 
-![1678687794621](images/1678438792865.png)
+![1678687794621](images/2.SpringCloud之Spring-Cloud-Commons源码解析.png)
 
 ```java
 public interface ServiceRegistry<R extends Registration> {

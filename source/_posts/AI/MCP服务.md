@@ -17,19 +17,19 @@ published: false
 模型上下文协议（MCP）是一个创新的开源协议，它重新定义了大语言模型（LLM）与外部世界的互动方式。MCP 提供了一种标准化方法，使任意大语言模型能够轻松连接各种数据源和工具，实现信息的无缝访问和处理。MCP 就像是 AI 应用程序的 USB-C 接口，为 AI 模型提供了一种标准化的方式来连接不同的数据源和工具。
 ### 1.1 服务架构
 
-![MCP服务架构|500](images/MCP服务架构.svg)
+![MCP服务架构|500](images/1.MCP服务.svg)
 
 ### 1.2 Agent架构
 
-![Agent架构|500](images/Agent架构.svg)
+![Agent架构|500](images/2.MCP服务.svg)
 ### 1.3 MCP流程调用
 
-![|500](images/MCP流程调用.svg)
+![|500](images/3.MCP服务.svg)
 
 ### 1.4 官方架构
 MCP就像是USB-C一样，可以让不同设备通过相同的接口连接在一起
 
-![|500](images/MCP服务-1744869631283.png)
+![|500](images/4.MCP服务.png)
 
 ## 2. Python MCP
 
@@ -1198,7 +1198,7 @@ webflux的依赖包是同时兼容了，sse、stdio等方式进行通信，其�
 
 ##### ToolCallbackProvider
 
-![|500](images/MCP服务-1744872737197.png)
+![|500](images/5.MCP服务.png)
 
 - MethodToolCallbackProvider：方法工具回调函数提供器
 - StaticToolCallbackProvider：里面包含了FunctionCallback包装了一层
@@ -1229,7 +1229,7 @@ public List<McpServerFeatures.SyncToolSpecification> weatherTools2() {
 ##### ToolCallback
 通过上面的提供器最终构建的还是 **ToolCallback** 接口类型的实例对象
 
-![|500](images/MCP服务-1744873575006.png)
+![|500](images/6.MCP服务.png)
 
 - MethodToolCallback：普通@Tool标识的方法工具回调函数
 - FunctionToolCallback：函数回调工具
