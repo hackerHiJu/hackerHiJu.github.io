@@ -138,7 +138,7 @@ public class AtomConsumerConfiguration {
 
 ## 三、源码
 
-![[images/2.SpringCloud之Stream源码解析.svg]]
+![2.SpringCloud之Stream源码解析](images/2.SpringCloud之Stream源码解析.svg)
 
 ### 1. 自动装配
 
@@ -322,7 +322,7 @@ public Collection<Binding<Object>> createAndBindOutputs(
 - RocketMQBinderConfigurationProperties:rocketmq绑定器的额外映射配置,用于配置扩展信息的
 - RocketMQExtendedBindingProperties:用于配置文件中 **spring.cloud.stream.rocketmq**
 
-![[images/7.SpringCloud之Stream源码解析.svg]]
+![7.SpringCloud之Stream源码解析](images/7.SpringCloud之Stream源码解析.svg)
 
 
 ### 2. BindingService

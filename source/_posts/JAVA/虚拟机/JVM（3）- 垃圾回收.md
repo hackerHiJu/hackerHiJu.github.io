@@ -142,7 +142,7 @@ soft方法：
 
 #### 5.2.1 参数
 
-![image-20211028144351791](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/image-20211028144351791.png)
+![image-20211028144351791](https://cdn.jsdelivr.net/gh/hyqf98/note-picture@main/note-picture/image-20211028144351791.png)
 
 +UseAdaptiveSizePolicy：自适应的调整大小（新生代、晋升阈值、整个堆的大小）
 
@@ -176,5 +176,5 @@ ConcGCThreads=threads：并发的线程数量，一般并行线程的四分之�
 
 ### 6.2 垃圾回收阶段
 
-![1639398694582](https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/1639398694582.png)
+![1639398694582](https://cdn.jsdelivr.net/gh/hyqf98/note-picture@main/note-picture/1639398694582.png)
 

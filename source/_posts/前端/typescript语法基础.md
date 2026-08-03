@@ -8,7 +8,7 @@ tags:
 comments: true
 categories:
   - 前端
-thumbnail: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png
+thumbnail: https://cdn.jsdelivr.net/gh/hyqf98/note-picture@main/note-picture/%25E5%25A4%25A9%25E7%25A9%25BA.png
 ---
 
 

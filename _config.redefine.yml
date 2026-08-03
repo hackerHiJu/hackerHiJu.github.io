@@ -11,7 +11,7 @@
 # Docs: https://redefine-docs.ohevan.com/basic/info
 info:
   # Site title
-  title: HackerHiJu.Site
+  title: Hyqf98.Site
   # Site subtitle
   subtitle: 一个有趣的网站
   # Author name
@@ -125,8 +125,8 @@ home_banner:
   style: fixed # static or fixed
   # Home banner image
   image:
-    light: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%B8%8A%E7%8F%AD-%E4%B8%8D%E6%83%B3%E5%8A%A0%E7%8F%AD.png # light mode
-    dark: https://cdn.jsdelivr.net/gh/hackerHiJu/note-picture@main/note-picture/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%B8%8A%E7%8F%AD-%E4%B8%8D%E6%83%B3%E5%8A%A0%E7%8F%AD.png # dark mode
+    light: https://cdn.jsdelivr.net/gh/hyqf98/note-picture@main/note-picture/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%B8%8A%E7%8F%AD-%E4%B8%8D%E6%83%B3%E5%8A%A0%E7%8F%AD.png # light mode
+    dark: https://cdn.jsdelivr.net/gh/hyqf98/note-picture@main/note-picture/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%B8%8A%E7%8F%AD-%E4%B8%8D%E6%83%B3%E5%8A%A0%E7%8F%AD.png # dark mode
   # Home banner title
   title: 废话少说上号
   # Home banner subtitle
@@ -364,8 +364,8 @@ comment:
     gitalk:
       clientID: Ov23liIysgjBtAKZDxVn # GitHub Application Client ID
       clientSecret: d0f1f46730eed4a55a5b59f7d2df3da6bd093618 # GitHub Application Client Secret
-      repo: hackerHiJu.GiTalk # GitHub repository
-      owner: hackerHiJu # GitHub repository owner
+      repo: hyqf98.GiTalk # GitHub repository
+      owner: hyqf98 # GitHub repository owner
       proxy: https://gitalk.iamxiaohaijun.workers.dev/?https://github.com/login/oauth/access_token # GitHub repository proxy
     # Twikoo comment system. See https://twikoo.js.org/
     twikoo:
