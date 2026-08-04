@@ -1005,10 +1005,17 @@ inject:
         background-size: 200% !important;
       }
 
-      /* === 修复标题被技能图标遮挡 === */
+      /* === home_top 标题层级修复 === */
+      /* 默认：标题（何忆清风/代码改变世界）在 #random-banner 上层显示 */
       #random-banner .banners-title {
         z-index: 2 !important;
+        transition: opacity 0.3s ease !important;
       }
+      /* hover #random-banner 时：标题淡出，让"随便逛逛"覆盖层完整显示 */
+      #random-banner:hover .banners-title {
+        opacity: 0 !important;
+      }
+      /* 技能图标区域下移，避免与标题重叠 */
       #skills-tags-group-all {
         margin-top: 5rem !important;
       }
