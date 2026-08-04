@@ -1,116 +1,226 @@
 - category: AI
-  icon: fa-solid fa-brain # 工具分类的图标
+  icon: fa-solid fa-brain
   items:
-    - name: ChatGPT
-      link: https://chat.openai.com # 书签链接地址
-      description: OpenAI 的 AI 对话助手
-      image: https://chat.openai.com/favicon.ico # 网站图标地址
-    - name: Claude
-      link: https://www.anthropic.com/
-      description: Anthropic 的 AI 对话助手
-      image: https://www.anthropic.com/favicon.ico
-    - name: 通义千问
-      link: https://chat.qwen.ai/
-      description: 通义千问智能AI对话助手
-      image: https://assets.alicdn.com/g/qwenweb/qwen-webui-fe/0.0.57/favicon.png
-    - name: DeepSeek
-      link: https://chat.deepseek.com/
-      description: DeepSeek AI对话助手
-      image: https://cdn.deepseek.com/chat/icon.png
-    - name: 微调Qwen
-      link: https://qwen.readthedocs.io/zh-cn/latest/getting_started/quickstart.html# # 书签链接地址
-      description: 一起动手微调大模型
-      image: https://assets.alicdn.com/g/qwenweb/qwen-webui-fe/0.0.57/favicon.png   # 网站图标地址
-    - name: 羊驼
-      link: https://ollama.com/search # 书签链接地址
-      description: ollama
-      image: https://ollama.com/public/ollama.png    # 网站图标地址
-    - name: C站
-      link: https://civitai.com/models # 书签链接地址
-      description: ollama
-      image: https://civitai.com/favicon-blue.ico   # 网站图标地址
-
+  - name: ChatGPT
+    link: https://chat.openai.com
+    description: OpenAI 的 AI 对话助手
+    image: https://chat.openai.com/favicon.ico
+  - name: Claude
+    link: https://www.anthropic.com/
+    description: Anthropic 的 AI 对话助手
+    image: https://www.anthropic.com/favicon.ico
+  - name: 通义千问
+    link: https://chat.qwen.ai/
+    description: 通义千问智能AI对话助手
+    image: https://assets.alicdn.com/g/qwenweb/qwen-webui-fe/0.0.57/favicon.png
+  - name: DeepSeek
+    link: https://chat.deepseek.com/
+    description: DeepSeek AI对话助手
+    image: https://cdn.deepseek.com/chat/icon.png
+  - name: 微调Qwen
+    link: https://qwen.readthedocs.io/zh-cn/latest/getting_started/quickstart.html#
+    description: 一起动手微调大模型
+    image: https://assets.alicdn.com/g/qwenweb/qwen-webui-fe/0.0.57/favicon.png
+  - name: 羊驼
+    link: https://ollama.com/search
+    description: ollama
+    image: https://ollama.com/public/ollama.png
+  - name: C站
+    link: https://civitai.com/models
+    description: ollama
+    image: https://civitai.com/favicon-blue.ico
 - category: 学习资源
   icon: fa-book
   items:
-    - name: Deepfacelab论坛
-      link: https://www.dfldata.cc/forum.php # 书签链接地址
-      description: 一个AI换脸的论坛网站
-      image:  # 网站图标地址
-    - name: Deepfacelab论坛
-      link: https://learn.lianglianglee.com/ # 书签链接地址
-      description: 一个极客时间的资料
-      image: https://learn.lianglianglee.com/static/favicon.png # 网站图标地址
-    - name: 凤凰架构
-      link: https://icyfenix.cn/summary/ # 书签链接地址
-      description: 想成为大佬？
-      image: https://icyfenix.cn/images/logo-color.png # 网站图标地址
-    - name: 开源项目集
-      link: https://dromara.org/zh/ # 书签链接地址
-      description: 全是开源啊
-      image: https://dromara.org/logo.svg # 网站图标地址
-    - name: 美团技术沙龙
-      link: https://tech.meituan.com/ # 书签链接地址
-      description: 美团的大佬们写的技术博客
-      image:  # 网站图标地址
-    - name: Java知识体系
-      link: https://pdai.tech/md/outline/x-outline.html # 书签链接地址
-      description: 起飞
-      image:  # 网站图标地址
-    - name: 小林coding
-      link: https://cdn.xiaolincoding.com/logo.png # 书签链接地址
-      description: 一位大佬的博客
-      image:  # 网站图标地址
-    - name: 7天用GO从零实现系列
-      link: https://geektutu.com/post/gee.html # 书签链接地址
-      description: GO语言！！！
-      image: https://geektutu.com/img/icon.png   # 网站图标地址
-    - name: GO语言手写Redis
-      link: https://www.cnblogs.com/Finley/category/1598973.html # 书签链接地址
-      description: 我行你也行
-      image: https://pic.cnblogs.com/avatar/793413/20160316194205.png   # 网站图标地址
-
-
+  - name: Deepfacelab论坛
+    link: https://www.dfldata.cc/forum.php
+    description: 一个AI换脸的论坛网站
+    image: null
+  - name: Deepfacelab论坛
+    link: https://learn.lianglianglee.com/
+    description: 一个极客时间的资料
+    image: https://learn.lianglianglee.com/static/favicon.png
+  - name: 凤凰架构
+    link: https://icyfenix.cn/summary/
+    description: 想成为大佬？
+    image: https://icyfenix.cn/images/logo-color.png
+  - name: 开源项目集
+    link: https://dromara.org/zh/
+    description: 全是开源啊
+    image: https://dromara.org/logo.svg
+  - name: 美团技术沙龙
+    link: https://tech.meituan.com/
+    description: 美团的大佬们写的技术博客
+    image: null
+  - name: Java知识体系
+    link: https://pdai.tech/md/outline/x-outline.html
+    description: 起飞
+    image: null
+  - name: 小林coding
+    link: https://cdn.xiaolincoding.com/logo.png
+    description: 一位大佬的博客
+    image: null
+  - name: 7天用GO从零实现系列
+    link: https://geektutu.com/post/gee.html
+    description: GO语言！！！
+    image: https://geektutu.com/img/icon.png
+  - name: GO语言手写Redis
+    link: https://www.cnblogs.com/Finley/category/1598973.html
+    description: 我行你也行
+    image: https://pic.cnblogs.com/avatar/793413/20160316194205.png
 - category: 工具
   icon: fa-tools
   items:
-    - name: AIBase
-      link: https://www.aibase.com/zh/tools # 书签链接地址
-      description: 一个AI工具集合
-      image: https://top.aibase.com/_static/img/Frame@2x.eddfa3e.png # 网站图标地址
-    - name: AIBot
-      link: https://ai-bot.cn/ # 书签链接地址
-      description: 一个AI工具集合
-      image: https://ai-bot.cn/wp-content/uploads/2023/03/ai-bot-logo-black.png # 网站图标地址
-    - name: AIHub
-      link: https://www.aihub.cn/tools/ # 书签链接地址
-      description: 一个AI工具集合
-      image: https://www.aihub.cn/wp-content/uploads/2023/08/aihub_cn_logo.png # 网站图标地址
-    - name: AGI掘金知识库
-      link: https://agijuejin.feishu.cn/wiki/UvJPwhfkiitMzhkhEfycUnS9nAm # 书签链接地址
-      description: 好东西
-      image:  # 网站图标地址
-    - name: StableDiffusion-CN
-      link: https://www.stablediffusion-cn.com/ # 书签链接地址
-      description: SD的中文论坛
-      image: https://www.stablediffusion-cn.com/sdcnlogo.svg # 网站图标地址
-
+  - name: AIBase
+    link: https://www.aibase.com/zh/tools
+    description: 一个AI工具集合
+    image: https://top.aibase.com/_static/img/Frame@2x.eddfa3e.png
+  - name: AIBot
+    link: https://ai-bot.cn/
+    description: 一个AI工具集合
+    image: https://ai-bot.cn/wp-content/uploads/2023/03/ai-bot-logo-black.png
+  - name: AIHub
+    link: https://www.aihub.cn/tools/
+    description: 一个AI工具集合
+    image: https://www.aihub.cn/wp-content/uploads/2023/08/aihub_cn_logo.png
+  - name: AGI掘金知识库
+    link: https://agijuejin.feishu.cn/wiki/UvJPwhfkiitMzhkhEfycUnS9nAm
+    description: 好东西
+    image: null
+  - name: StableDiffusion-CN
+    link: https://www.stablediffusion-cn.com/
+    description: SD的中文论坛
+    image: https://www.stablediffusion-cn.com/sdcnlogo.svg
 - category: VPN
   icon: fa-solid fa-rocket-launch
   items:
-    - name: 奈云
-      link: https://www.v2ny.de/#/register?code=GzlNKzir # 书签链接地址
-      description: 比较好用的VPN
-      image: https://www.v2ny.de/theme/aurora/static/img/naiun.png # 网站图标地址
-    - name: 小黑子
-      link: https://xn--i8s3q176n.xyz/#/register?code=eK7qtJ1E # 书签链接地址
-      description: 要啥自行车？要啥自行车？要啥自行车？
-      image:  # 网站图标地址
-
+  - name: 奈云
+    link: https://www.v2ny.de/#/register?code=GzlNKzir
+    description: 比较好用的VPN
+    image: https://www.v2ny.de/theme/aurora/static/img/naiun.png
+  - name: 小黑子
+    link: https://xn--i8s3q176n.xyz/#/register?code=eK7qtJ1E
+    description: 要啥自行车？要啥自行车？要啥自行车？
+    image: null
 - category: 资源
   icon: fa-book
   items:
-    - name: ChatGPT
-      link: https://chat.openai.com # 书签链接地址
-      description: OpenAI 的 AI 对话助手
-      image: https://chat.openai.com/favicon.ico # 网站图标地址
+  - name: ChatGPT
+    link: https://chat.openai.com
+    description: OpenAI 的 AI 对话助手
+    image: https://chat.openai.com/favicon.ico
+- category: 开发工具
+  icon: fa-solid fa-code
+  items:
+  - name: GitHub
+    link: https://github.com
+    description: 全球最大代码托管平台
+    image: https://github.githubassets.com/favicons/favicon.svg
+  - name: GitLab
+    link: https://gitlab.com
+    description: DevOps 一体化平台
+    image: https://gitlab.com/favicon.ico
+  - name: Gitee
+    link: https://gitee.com
+    description: 国内代码托管平台
+    image: https://gitee.com/favicon.ico
+  - name: Stack Overflow
+    link: https://stackoverflow.com
+    description: 程序员问答社区
+    image: https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico
+  - name: LeetCode
+    link: https://leetcode.cn
+    description: 算法刷题平台
+    image: https://leetcode.cn/favicon.ico
+- category: Java 生态
+  icon: fa-brands fa-java
+  items:
+  - name: Spring 官方文档
+    link: https://spring.io/projects/spring-framework
+    description: Spring 框架官方文档
+    image: https://spring.io/favicon.ico
+  - name: Spring Boot
+    link: https://spring.io/projects/spring-boot
+    description: Spring Boot 官方文档
+    image: https://spring.io/favicon.ico
+  - name: MyBatis
+    link: https://mybatis.org/mybatis-3/zh_CN/index.html
+    description: MyBatis 中文文档
+    image: https://mybatis.org/images/mybatis-logo.png
+  - name: Netty
+    link: https://netty.io/
+    description: 高性能网络通信框架
+    image: https://netty.io/images/favicon.ico
+  - name: Apache Dubbo
+    link: https://dubbo.apache.org/zh/
+    description: 高性能 RPC 框架
+    image: https://dubbo.apache.org/favicon.ico
+  - name: Seata
+    link: https://seata.io/zh-cn/
+    description: 分布式事务解决方案
+    image: https://seata.io/img/seata_logo.png
+- category: AI 工具
+  icon: fa-solid fa-brain
+  items:
+  - name: ChatGPT
+    link: https://chat.openai.com
+    description: OpenAI 的 AI 对话助手
+    image: https://chat.openai.com/favicon.ico
+  - name: Claude
+    link: https://www.anthropic.com/
+    description: Anthropic 的 AI 对话助手
+    image: https://www.anthropic.com/favicon.ico
+  - name: DeepSeek
+    link: https://chat.deepseek.com/
+    description: DeepSeek AI 对话助手
+    image: https://cdn.deepseek.com/chat/icon.png
+  - name: 通义千问
+    link: https://chat.qwen.ai/
+    description: 通义千问智能 AI 对话助手
+    image: https://assets.alicdn.com/g/qwenweb/qwen-webui-fe/0.0.57/favicon.png
+  - name: Ollama
+    link: https://ollama.com/search
+    description: 本地大模型运行工具
+    image: https://ollama.com/public/ollama.png
+  - name: Civitai
+    link: https://civitai.com/models
+    description: AI 绘画模型社区
+    image: https://civitai.com/favicon-blue.ico
+- category: 数据库
+  icon: fa-solid fa-database
+  items:
+  - name: Redis 官方
+    link: https://redis.io/
+    description: 内存数据库官方文档
+    image: https://redis.io/favicon.ico
+  - name: MySQL
+    link: https://dev.mysql.com/doc/
+    description: MySQL 官方文档
+    image: https://dev.mysql.com/common/images/favicon.ico
+  - name: MongoDB
+    link: https://www.mongodb.com/docs/
+    description: MongoDB 文档数据库
+    image: https://www.mongodb.com/docs/images/favicon.ico
+  - name: TDengine
+    link: https://docs.tdengine.com/
+    description: 高性能时序数据库
+    image: https://docs.tdengine.com/images/favicon.ico
+- category: 云原生与运维
+  icon: fa-solid fa-server
+  items:
+  - name: Kubernetes
+    link: https://kubernetes.io/zh-cn/
+    description: 容器编排平台官方文档
+    image: https://kubernetes.io/favicon.ico
+  - name: Docker
+    link: https://docs.docker.com/
+    description: 容器化官方文档
+    image: https://docs.docker.com/favicon.ico
+  - name: Istio
+    link: https://istio.io/
+    description: 服务网格平台
+    image: https://istio.io/favicon.ico
+  - name: Nginx
+    link: https://nginx.org/
+    description: 高性能 Web 服务器
+    image: https://nginx.org/favicon.ico

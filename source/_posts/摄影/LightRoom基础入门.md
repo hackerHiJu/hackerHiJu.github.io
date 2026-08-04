@@ -1,17 +1,16 @@
 ---
 title: LightRoom基础入门
-date: 2025-04-02 03:31:47
-updated: 2025-04-02 03:31:47
+categories:
+  - 摄影
 tags:
   - 摄影
   - 颜色
-comments: true
-categories:
-  - 摄影
-  - 颜色
-  - 配色
-thumbnail: https://cdn2.zzzmh.cn/wallpaper/origin/d4b96518882111ebb6edd017c2d2eca2.jpg/fhd?auth_key=1749052800-a9d6db4059f59d93c3c9dff4b20c7e6a2df84469-0-6f513c5a33fc378ef8fdb3b94f27dbf8
-published: false
+cover: /images/covers/摄影.jpg
+thumbnail: /images/covers/摄影.jpg
+published: true
+abbrlink: 4021610459
+date: 2025-04-02 03:31:47
+updated: 2025-04-02 03:31:47
 ---
 # LightRoom入门
 

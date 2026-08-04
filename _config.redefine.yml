@@ -125,8 +125,8 @@ home_banner:
   style: fixed # static or fixed
   # Home banner image
   image:
-    light: https://cdn.jsdelivr.net/gh/hyqf98/note-picture@main/note-picture/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%B8%8A%E7%8F%AD-%E4%B8%8D%E6%83%B3%E5%8A%A0%E7%8F%AD.png # light mode
-    dark: https://cdn.jsdelivr.net/gh/hyqf98/note-picture@main/note-picture/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%B8%8A%E7%8F%AD-%E4%B8%8D%E6%83%B3%E5%8A%A0%E7%8F%AD.png # dark mode
+    light: /images/banner-bg.png # light mode
+    dark: /images/banner-bg.png # dark mode
   # Home banner title
   title: 废话少说上号
   # Home banner subtitle
@@ -201,30 +201,39 @@ navbar:
   links:
     Home:
       path: /
-      icon: fa-regular fa-house fa-beat # can be empty
-    这有好东西:
+      icon: fa-regular fa-house
+    Java:
+      icon: fa-brands fa-java
+      submenus:
+        Spring: /categories/Java/source/Spring/
+        Redis: /categories/distributed/Redis/
+        Netty: /categories/Java/Netty/
+        K8s: /categories/distributed/container/
+        JVM: /categories/JVM/
+        Mysql: /categories/Mysql/
+        Mybatis: /categories/Java/source/
+        Seata: /categories/distributed/Seata/
+        多线程: /categories/Java/source/
+    AI:
+      icon: fa-solid fa-robot
+      submenus:
+        AI大模型: /categories/AI/
+        StableDiffusion: /categories/AI/
+        Pytorch: /categories/AI/
+        显卡: /categories/AI/
+    GO:
+      path: /categories/GO/
+      icon: fa-solid fa-code
+    More:
+      icon: fa-solid fa-ellipsis
+      submenus:
+        汇编语言: /categories/assembly/
+        前端: /categories/frontend/
+        分布式: /categories/distributed/
+        协议: /categories/protocol/
+    Bookmarks:
       path: /bookmarks/
-      icon: fa-solid fa-bookmark fa-shake
-    # Archives:
-    #   path: /archives
-    #   icon: fa-regular fa-archive # can be empty
-    # Status:
-    #   path: https://status.ohevan.com/
-    #   icon: fa-regular fa-chart-bar
-    # About:
-    #   icon: fa-regular fa-user
-    #   submenus:
-    #     Me: /about
-    #     Github: https://github.com/EvanNotFound/hexo-theme-redefine
-    #     Blog: https://ohevan.com
-    #     Friends: /friends
-    # Links:
-    #   icon: fa-regular fa-link
-    #   submenus:
-    #     Link1: /link1
-    #     Link2: /link2
-    #     Link3: /link3
-    # ...... # you can add more
+      icon: fa-solid fa-bookmark
   # Navbar search (local search). Requires hexo-generator-searchdb (npm i hexo-generator-searchdb). See https://github.com/theme-next/hexo-generator-searchdb
   search:
     # Whether to enable
@@ -413,15 +422,80 @@ footer:
 # Docs: https://redefine-docs.ohevan.com/inject
 inject:
   # Whether to enable inject
-  enable: false
+  enable: true
   # Inject custom head html code
   head:
-    -
-    -
+    - |
+      <style>
+      /* ===== 开屏加载动画重写 ===== */
+      .preloader{
+        background: linear-gradient(160deg,#0a0a1a 0%,#1a1a3e 40%,#2d1b4e 70%,#1a0a2e 100%) !important;
+        flex-direction: column !important;
+      }
+      .preloader .ml13{display:none !important;}
+      /* 火箭升空动画 */
+      .preloader::before{
+        content:'';
+        width:60px;height:60px;
+        background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff6b35'%3E%3Cpath d='M12 2C8 2 5 5 5 9c0 2 1 4 2 5l-1 3 2-1 1 2 3-2 3 2 1-2 2 1-1-3c1-1 2-3 2-5 0-4-3-7-7-7zm0 3a2 2 0 110 4 2 2 0 010-4zM8 20l1-2 3 1 3-1 1 2-4 2-4-2z'/%3E%3C/svg%3E") center/contain no-repeat;
+        animation: launch 1.8s cubic-bezier(.4,0,.2,1) infinite;
+        filter: drop-shadow(0 0 12px rgba(255,107,53,0.6));
+      }
+      @keyframes launch{
+        0%{transform:translateY(30px) rotate(-8deg);opacity:0.4;}
+        30%{opacity:1;}
+        50%{transform:translateY(-20px) rotate(-12deg);opacity:1;}
+        70%{opacity:0.8;}
+        100%{transform:translateY(-50px) rotate(-15deg);opacity:0;}
+      }
+      /* 火箭尾焰粒子 */
+      .preloader::after{
+        content:'';
+        position:absolute;
+        bottom:20%;
+        width:4px;height:0;
+        background:linear-gradient(to top,transparent,#ff6b35,#ffd700);
+        border-radius:50%;
+        animation: flame 0.6s ease-out infinite;
+      }
+      @keyframes flame{
+        0%{height:0;opacity:0;}
+        30%{height:40px;opacity:0.8;}
+        100%{height:80px;opacity:0;}
+      }
+      /* 底部加载进度条 */
+      .preloader > div:last-child{
+        position:absolute !important;
+        bottom:12% !important;
+        width:220px !important;
+        height:3px !important;
+        background:rgba(255,255,255,0.1) !important;
+        border-radius:2px !important;
+        overflow:hidden !important;
+        gap:0 !important;
+      }
+      .preloader > div:last-child::before{
+        content:'';
+        position:absolute;
+        top:0;left:-40%;
+        width:40%;height:100%;
+        background:linear-gradient(90deg,transparent,#ff6b35,#ffd700,transparent);
+        border-radius:2px;
+        animation: loading 1.2s ease-in-out infinite;
+      }
+      @keyframes loading{
+        0%{left:-40%;} 100%{left:100%;}
+      }
+      /* ===== 导航栏文字颜色 ===== */
+      .navbar-item a{color:rgba(255,255,255,0.9) !important;}
+      .navbar-item a:hover,.navbar-item a.active{color:#ff6b35 !important;}
+      .logo-title{color:rgba(255,255,255,0.95) !important;}
+      .navbar-item.search{color:rgba(255,255,255,0.9) !important;}
+      .sub-menu a{color:var(--default-text-color) !important;}
+      </style>
     # Inject custom footer html code
   footer:
     -
-    - # INJECT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
       # PLUGINS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start

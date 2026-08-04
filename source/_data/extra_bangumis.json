@@ -1,0 +1,49 @@
+{
+  "watchingExtra": [
+    {
+      "title": "凡人修仙传",
+      "type": "国创",
+      "area": "中国大陆",
+      "cover": "/images/bangumi/fanren.png",
+      "totalCount": "更新中",
+      "link": "https://www.bilibili.com/bangumi/play/ss43465",
+      "des": "一个普通山村小子韩立，偶然下卷入江湖纷争，踏上修仙之路。凡人流开山之作！"
+    },
+    {
+      "title": "牧神记",
+      "type": "国创",
+      "area": "中国大陆",
+      "cover": "/images/bangumi/mushenji.png",
+      "totalCount": "更新中",
+      "link": "https://www.bilibili.com/bangumi/play/ss50325",
+      "des": "大荒残老村少年秦牧的修真传奇。宅猪同名小说改编！"
+    },
+    {
+      "title": "航拍中国",
+      "type": "纪录片",
+      "area": "中国大陆",
+      "cover": "/images/bangumi/hangpai.png",
+      "totalCount": "全4季",
+      "link": "https://www.bilibili.com/bangumi/play/ss43522",
+      "des": "以空中视角俯瞰中国，展现前所未见的大美中国。"
+    },
+    {
+      "title": "地球脉动",
+      "type": "纪录片",
+      "area": "英国",
+      "cover": "/images/bangumi/diqiu.jpg",
+      "totalCount": "全3季",
+      "link": "https://www.bilibili.com/bangumi/play/ss45252",
+      "des": "BBC 出品，探索地球上令人惊叹的自然奇观和野生动物。"
+    },
+    {
+      "title": "灵笼",
+      "type": "国创",
+      "area": "中国大陆",
+      "cover": "/images/bangumi/linglong.png",
+      "totalCount": "更新中",
+      "link": "https://www.bilibili.com/bangumi/play/ss38781",
+      "des": "末日废土题材的国产科幻动画，讲述人类在灾难后的生存与抗争。"
+    }
+  ]
+}

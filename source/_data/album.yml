@@ -1,0 +1,8 @@
+# 相册集数据
+
+# === 收藏的壁纸 ===
+- class_name: 收藏的壁纸
+  path_name: /album/live-wallpapers/
+  description: 我喜欢的壁纸收藏
+  cover: /album/live-wallpapers/cloud-mountain-sunset.png
+  top_background: /album/live-wallpapers/cloud-mountain-sunset.png

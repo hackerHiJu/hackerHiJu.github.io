@@ -1,0 +1,10 @@
+{
+  "attachmentFolderPath": "./images",
+  "promptDelete": false,
+  "readableLineLength": false,
+  "showLineNumber": true,
+  "showUnsupportedFiles": true,
+  "newFileLocation": "current",
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "relative"
+}

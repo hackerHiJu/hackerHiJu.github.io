@@ -8,3 +8,9 @@ public/
 _multiconfig.yml
 .idea/
 pnpm-lock.yaml
+
+# Obsidian 动态状态文件（每次打开都会变，不入库）
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/plugins/*/data.json
+.obsidian/.cache

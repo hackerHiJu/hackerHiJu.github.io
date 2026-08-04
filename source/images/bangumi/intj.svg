@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <circle cx="100" cy="100" r="90" fill="#425AEF" opacity="0.1"/>
+  <circle cx="100" cy="80" r="35" fill="#425AEF"/>
+  <path d="M50 180 Q100 130 150 180 Z" fill="#425AEF"/>
+  <text x="100" y="170" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold" font-family="sans-serif">INTJ</text>
+</svg>

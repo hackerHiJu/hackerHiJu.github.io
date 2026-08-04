@@ -1,0 +1,98 @@
+- name: 海军
+  avatarImg: /images/头像.jpg
+  avatarSkills:
+    left:
+      - ☕ Java
+      - 🌱 Spring
+      - 🔴 Redis
+      - 🚀 RocketMQ
+    right:
+      - ⚡ Tauri2
+      - 🦀 Rust
+      - 💚 Vue
+      - 🐳 K8s
+  helloAbout: Hello World!
+  skillsTips:
+    tips: 技能
+    title: 创造无限可能
+  careers:
+    tips: 职业生涯
+    title: 从代码到产品
+    img: https://npm.elemecdn.com/anzhiyu-blog@2.1.6/img/post/about.png
+    list:
+      - { desc: Java 后端开发", color: "#ED8B00" }
+      - { desc: 产品开发", color: "#ff6b35" }
+      - { desc: AI 全栈", color: "#425AEF" }
+  subtitle: 后端开发工程师 · Java · AI · Tauri2
+  description: 98年，计算机网络专业，8年码龄，热爱技术、篮球、摄影和追番
+  aboutsiteTips:
+    tips: 技能 / 兴趣
+    title1: 技术与生活
+    title2: 探索更多可能
+    word: [代码, 篮球, 摄影, 游戏, 追番]
+  personalities:
+    author_name: 海军
+    personality_type: INTJ · 建筑师
+    photo_url: /images/头像.jpg
+    personality_img: /images/bangumi/intj.svg
+    name_url: https://www.16personalities.com/ch/intj
+    personality_type_color: "#425AEF"
+  statistic:
+    enable: true
+    cover: /images/banner-bg.png
+    link: /
+    text: 更多数据
+  map:
+    title: 现居
+    StrengthenTitle: 成都
+    background: /images/bangumi/map-bg.png
+    backgroundDark: /images/bangumi/map-bg.png
+  selfInfo:
+    selfInfoTips1: 出生年份
+    selfInfoContentYear: 1998
+    selfInfoTips2: 专业
+    selfInfoContent2: 计算机网络
+    selfInfoTips3: 关注偏好
+    selfInfoContent3: 🔮 数码科技
+  maxim:
+    maxim_tips: 座右铭
+    maxim_top: 要么忙着活
+    maxim_bottom: 要么忙着死
+  buff:
+    buff_tips: 技能
+    buff_top: 前端 / 后端 / AI
+    buff_bottom: 全栈开发一条龙
+  game:
+    game_tips: 游戏
+    game_title: 黑神话悟空
+    game_uid: 🎮 国产3A巅峰之作
+    game_bg: /images/bangumi/wukong.jpg
+  comic:
+    comic_tips: 追番
+    comic_title: 喜欢的影视
+    comic_list:
+      - name: 凡人修仙传
+        href: https://www.bilibili.com/bangumi/play/ss43465
+        cover: /images/bangumi/fanren.png
+      - name: 牧神记
+        href: https://www.bilibili.com/bangumi/play/ss50325
+        cover: /images/bangumi/mushenji.png
+      - name: 航拍中国
+        href: https://www.bilibili.com/bangumi/play/ss43522
+        cover: /images/bangumi/hangpai.png
+      - name: 地球脉动
+        href: https://www.bilibili.com/bangumi/play/ss45252
+        cover: /images/bangumi/diqiu.jpg
+      - name: 灵笼
+        href: https://www.bilibili.com/bangumi/play/ss38781
+        cover: /images/bangumi/linglong.png
+  music:
+    music_tips: 音乐
+    music_title: 随心而动
+    music_link: /music/
+    music_bg: https://p2.music.126.net/_S2bLe5tBO1jGLnB8lGoFw==/109951167817218300.jpg
+  like:
+    like_tips: 兴趣爱好
+    like_title: 热爱可抵岁月漫长
+    like_bottom: 🏀 篮球 · 🎮 黑神话悟空 · 📷 摄影后期 · 📺 追番
+    like_bg: /images/banner-bg.png

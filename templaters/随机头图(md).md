@@ -1,1 +1,1 @@
-<% tp.web.random_picture("1920x1080", "science fiction") %>
+![photo by Aakash Dhage(https://unsplash.com/@aakashdhage?utm_source=templater_proxy&utm_medium=referral) on Unsplash](https://images.unsplash.com/photo-1670529215446-256df9e2fc3a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODU3MjI2MDZ8&ixlib=rb-4.1.0&q=85&w=1920&h=1080)

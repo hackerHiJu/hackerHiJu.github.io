@@ -1,0 +1,38 @@
+/* ============================================
+   Excalidraw 嵌入：撑满内容宽度（独占一行）
+   作用：让 ![[xxx.excalidraw.md]] 嵌入图占满正文宽度
+   ============================================ */
+
+/* 阅读模式：嵌入容器本身占满宽度 */
+.markdown-preview-view .internal-embed.excalidraw-embed,
+.markdown-preview-view .excalidraw-embed {
+  width: 100% !important;
+  display: block !important;
+}
+
+/* 编辑/实时预览模式 */
+.markdown-source-view .internal-embed.excalidraw-embed,
+.markdown-source-view .excalidraw-embed {
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Excalidraw 插件内部的 wrapper（真正承载 SVG 的层） */
+.excalidraw-embed .excalidraw-wrapper {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* SVG 内容跟随容器缩放，高度自适应保持比例 */
+.excalidraw-embed .excalidraw-wrapper svg,
+.excalidraw-embed svg {
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+}
+
+/* hover 时可以再放大一点，方便看细节（可选） */
+.excalidraw-embed .excalidraw-wrapper:hover svg {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}

@@ -1,5 +1,1 @@
-<%* 
-let url = await tp.web.random_picture("3840x2160", "science fiction,scenery");
-let result = url.match(/!\[(.*?)\]\((.*?)\)/);
--%>
-<% result[2] %>
+https://images.unsplash.com/photo-1758007664211-49b4805638e5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2NDU1OTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODU3MjI2MDZ8&ixlib=rb-4.1.0&q=85&w=3840&h=2160
